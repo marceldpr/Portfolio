@@ -29,7 +29,6 @@ export default defineConfig({
         alana: 'work/alana-platform/index.html',
         copilot: 'work/copilot-agent-builder/index.html',
         alanaDS: 'work/alana-design-system/index.html',
-        remember: 'work/remember/index.html',
         uiForge: 'work/ui-forge/index.html',
       },
     },
