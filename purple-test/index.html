@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Purple background — preview</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0a0a0a; }
+
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #0a0a0a;            /* base */
+    }
+
+    /* Crevix-style purple glow, rebuilt from layered radial gradients */
+    .glow {
+      position: absolute;
+      inset: -20%;                    /* bleed past edges so blur has no hard border */
+      filter: blur(60px);             /* Framer-soft falloff */
+      background:
+        /* lavender highlight, far/right of the sphere */
+        radial-gradient(60% 65% at 90% 32%, rgba(190,168,250,0.98) 0%, rgba(190,168,250,0) 62%),
+        /* bright magenta core, upper-center */
+        radial-gradient(42% 44% at 62% 17%, rgba(212,96,228,1)    0%, rgba(212,96,228,0)  56%),
+        /* vivid purple crescent rim */
+        radial-gradient(68% 82% at 72% 42%, rgba(150,25,200,0.88)  0%, rgba(150,25,200,0)  58%),
+        /* cool lavender body, lower right */
+        radial-gradient(90% 100% at 106% 60%, rgba(170,158,212,0.9) 0%, rgba(170,158,212,0) 68%),
+        /* deep indigo shadow, bottom-left of the sphere */
+        radial-gradient(50% 44% at 50% 64%, rgba(21,8,78,0.92)     0%, rgba(21,8,78,0)     56%);
+    }
+  </style>
+</head>
+<body>
+  <div class="hero"><div class="glow"></div></div>
+</body>
+</html>
