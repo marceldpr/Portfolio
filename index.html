@@ -141,6 +141,15 @@
     white-space: nowrap;
   }
 }
+/* Mobile (portrait phones): keep the hero to 3 lines by holding each h1 line on one row.
+   7vw is the largest size where the longest line ("Product designer with 10+ years") still fits a phone width. */
+@media screen and (max-width: 479px) {
+  .opening_wrap .heading-jumbo {
+    font-size: 7vw;
+    line-height: 120%;
+    white-space: nowrap;
+  }
+}
 /* Nudge the hero text lower in the header (desktop only; base is margin-top:9vw) */
 @media screen and (min-width: 992px) {
   .opening_section .opening_wrap {
