@@ -109,12 +109,25 @@
   pointer-events: none;
 }
 @media (max-width: 767px) {
+  /* iOS Safari freezes CSS animation of children inside a filtered container.
+     On mobile, drop the container filter and blur each blob individually so the
+     background keeps animating (like the reference). Loses the gooey/metaball
+     merge, but the soft glow reads the same on a phone. */
+  .bga-blobs {
+    filter: none;
+  }
   .bga-blob {
     width: 85%;
     height: 45%;
     top: calc(52% - 22.5%);
     left: calc(35% - 42.5%);
     opacity: 0.38;
+    filter: blur(44px);
+    will-change: transform;
+  }
+  /* cursor-following blob does nothing without a mouse; hide it (unblurred otherwise) */
+  .bga-interactive {
+    display: none;
   }
 }
 @keyframes bga-moveHorizontal {
