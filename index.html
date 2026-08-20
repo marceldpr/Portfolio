@@ -113,19 +113,26 @@
      On mobile, drop the container filter and blur each blob individually so the
      background keeps animating (like the reference). Loses the gooey/metaball
      merge, but the soft glow reads the same on a phone. */
+  /* iOS Safari freezes CSS animation of filtered/blended elements. On mobile we
+     drop the container filter, remove per-blob filter/blend, disable the CSS
+     keyframes, and drive the drift with a requestAnimationFrame loop (repaints on
+     the main thread, so it keeps moving on iOS). The soft radial gradient alone
+     reads as a glow, no blur needed. */
   .bga-blobs {
     filter: none;
   }
   .bga-blob {
-    width: 85%;
-    height: 45%;
-    top: calc(52% - 22.5%);
-    left: calc(35% - 42.5%);
-    opacity: 0.38;
-    filter: blur(44px);
+    width: 120%;
+    height: 70%;
+    top: calc(48% - 35%);
+    left: calc(35% - 60%);
+    opacity: 0.5;
+    filter: none;
+    mix-blend-mode: normal;
+    animation: none;
     will-change: transform;
   }
-  /* cursor-following blob does nothing without a mouse; hide it (unblurred otherwise) */
+  /* cursor-following blob does nothing without a mouse; hide it */
   .bga-interactive {
     display: none;
   }
@@ -221,4 +228,4 @@
   update();
 })();
 </script>
-<script>document.querySelectorAll(".year").forEach(function(e){e.textContent=new Date().getFullYear();});</script></body></html>
+<script>document.querySelectorAll(".year").forEach(function(e){e.textContent=new Date().getFullYear();});</script><script>(function(){var mq=window.matchMedia("(max-width: 767px)");var blobs=[].slice.call(document.querySelectorAll(".bga-blob"));if(!blobs.length)return;var p=blobs.map(function(_,i){return {ax:12+4*i,ay:16+4*(i%3),sx:0.18+0.045*i,sy:0.14+0.035*i,px:i*1.7,py:i*1.1};});var start=performance.now();function frame(now){if(mq.matches){var t=(now-start)/1000;for(var i=0;i<blobs.length;i++){var q=p[i];var x=Math.sin(t*q.sx+q.px)*q.ax;var y=Math.cos(t*q.sy+q.py)*q.ay;blobs[i].style.transform="translate("+x.toFixed(2)+"%,"+y.toFixed(2)+"%)";}}requestAnimationFrame(frame);}requestAnimationFrame(frame);})();</script></body></html>
