@@ -30,6 +30,7 @@ export default defineConfig({
         copilot: 'work/copilot-agent-builder/index.html',
         alanaDS: 'work/alana-design-system/index.html',
         uiForge: 'work/ui-forge/index.html',
+        tidalhaus: 'work/tidalhaus/index.html',
       },
     },
   },
