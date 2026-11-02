@@ -1,0 +1,7 @@
+.alana-results .impact-cards-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.alana-results .impact-card { width: 100%; min-height: 200px; aspect-ratio: auto; padding: 24px 16px; }
+.alana-results .impact-card-lbl { position: static; margin-top: 16px; line-height: 1.5; }
+@media (max-width: 600px) {
+  .alana-results .impact-cards-row { grid-template-columns: 1fr; }
+  .alana-results .impact-card { min-height: 160px; }
+}
