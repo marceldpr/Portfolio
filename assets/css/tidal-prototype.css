@@ -4,6 +4,7 @@
 .tidal-prototype-header a { color: #3893ff; font-size: 16px; line-height: 1.5; text-underline-offset: 4px; }
 .tidal-prototype-header a:hover { text-decoration: underline; }
 .tidal-prototype-header a:focus-visible { outline: 2px solid #3893ff; outline-offset: 6px; border-radius: 2px; }
+.tidal-prototype-frame { display: block; width: 100%; height: auto; min-height: 480px; aspect-ratio: 16 / 9; border: 1px solid #444; border-radius: 16px; background: #151515; }
 @media (max-width: 479px) {
   .tidal-prototype { margin-top: 32px; }
   .tidal-prototype-header h3 { font-size: 20px; }
