@@ -1,0 +1,10 @@
+.tidal-prototype { width: 100%; max-width: 1000px; margin-top: 48px; }
+.tidal-prototype-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.tidal-prototype-header h3 { margin: 0; color: #d3d3d3; font-size: 24px; line-height: 1.3; }
+.tidal-prototype-header a { color: #3893ff; font-size: 16px; line-height: 1.5; text-underline-offset: 4px; }
+.tidal-prototype-header a:hover { text-decoration: underline; }
+.tidal-prototype-header a:focus-visible { outline: 2px solid #3893ff; outline-offset: 6px; border-radius: 2px; }
+@media (max-width: 479px) {
+  .tidal-prototype { margin-top: 32px; }
+  .tidal-prototype-header h3 { font-size: 20px; }
+}
