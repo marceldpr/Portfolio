@@ -52,7 +52,7 @@
 }
 .case-header__content { width: min(var(--header-content), calc(100% - var(--header-space-lg))); min-width: 0; }
 .case-header__brand { margin: 0 0 var(--header-space-xs); color: var(--header-eyebrow); font-size: var(--header-eyebrow-size); font-weight: 500; line-height: 17px; text-transform: uppercase; }
-.case-header__title { margin: 0; color: var(--header-ink); font-family: inherit; font-size: var(--header-title); font-weight: 600; line-height: var(--header-title-leading); letter-spacing: normal; }
+.case-header__title { margin: 0; color: var(--header-ink); font-family: "Pp Neue Montreal", Arial, sans-serif; font-size: var(--header-title); font-weight: 400; line-height: var(--header-title-leading); letter-spacing: normal; }
 .case-header__description { margin: var(--header-space-md) 0 0; color: var(--header-muted); font-size: var(--header-body); line-height: var(--header-body-leading); font-weight: 400; }
 .case-header__details { display: flex; flex-direction: column; gap: var(--header-space-sm); margin: var(--header-space-xl) 0 0; }
 .case-header__detail { display: flex; justify-content: space-between; align-items: baseline; gap: var(--header-space-sm); font-size: var(--header-meta); line-height: var(--header-meta-leading); }
