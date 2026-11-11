@@ -17,7 +17,7 @@
   --header-body-leading: 28px;
   --header-meta: 16px;
   --header-eyebrow-size: 14px;
-  --header-button-size: 12px;
+  --header-button-size: 16px;
   --header-space-xs: 8px;
   --header-space-sm: 14px;
   --header-space-md: 24px;
@@ -25,8 +25,8 @@
   --header-space-xl: 64px;
   --header-action-gap: 64px;
   --header-radius: 8px;
-  --header-button-height: 44px;
-  --header-button-width: 146px;
+  --header-button-height: 56px;
+  --header-button-width: 200px;
   --header-top: 112px;
   --header-bottom: 61px;
   --header-title-leading: 1.2;
@@ -60,10 +60,10 @@
 .case-header__detail dd { margin: 0; text-align: right; font-weight: 400; }
 .case-header__divider { position: relative; height: 0; }
 .case-header__divider img { display: block; position: relative; top: -1px; max-width: 100%; height: auto; }
-.case-header__action { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: var(--header-button-width); min-height: var(--header-button-height); margin-top: var(--header-action-gap); padding: 10px; border: 1px solid var(--header-label); border-radius: var(--header-radius); background: var(--header-button); color: var(--header-ink); font-size: var(--header-button-size); font-weight: 500; line-height: 15px; text-decoration: none; }
+.case-header__action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: var(--header-button-width); min-height: var(--header-button-height); margin-top: var(--header-action-gap); padding: 16px 24px; border: 1px solid var(--header-label); border-radius: var(--header-radius); background: var(--header-button); color: var(--header-ink); font-size: var(--header-button-size); font-weight: 500; line-height: 22px; text-decoration: none; }
 .case-header__action:hover { background: var(--header-button-hover); color: var(--header-ink); }
 .case-header__action:focus-visible { outline: 2px solid var(--header-ink); outline-offset: 4px; }
-.case-header__action img { flex: none; }
+.case-header__action img { flex: none; width: auto; height: 16px; }
 .case-header__media { position: relative; overflow: hidden; aspect-ratio: var(--header-media-ratio); min-width: 0; }
 .case-header__image { position: absolute; display: block; max-width: none; object-fit: cover; }
 .case-header--copilot .case-header__image { width: 100.1387%; height: 127.5124%; left: -0.1387%; top: -6.5898%; }
