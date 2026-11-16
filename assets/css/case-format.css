@@ -65,7 +65,7 @@ h4 { font-size: 20px; line-height: 1.4; font-weight: 500; }
 .gallery-controls button::after { content: ''; width: 7px; height: 7px; border-radius: 99px; background: #aaa; transition: width .25s, background .25s; }
 .gallery-controls button[aria-current='true'] { width: 44px; }
 .gallery-controls button[aria-current='true']::after { width: 32px; background: #ddd; }
-.carousel-dock { position: sticky; bottom: 32px; z-index: 3; display: flex; align-items: center; gap: 16px; width: max-content; max-width: calc(100% - 40px); height: 56px; margin: -80px auto 24px; }
+.carousel-dock { position: sticky; bottom: 32px; z-index: 3; display: flex; align-items: center; gap: 16px; width: max-content; max-width: calc(100% - 40px); height: 56px; margin: 48px auto 0; }
 .carousel-dock { transition: opacity .3s, transform .4s cubic-bezier(.22,1,.36,1), visibility .3s; }
 .carousel-dock[data-ready='false'] { opacity: 0; visibility: hidden; transform: translateY(12px) scale(.95); }
 .carousel-dots, .carousel-playback { background: rgba(51,51,54,.7); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); box-shadow: inset 0 0 0 1px rgba(232,232,237,.11); border-radius: 99px; }
@@ -245,7 +245,7 @@ footer small { position: absolute; right: 24px; color: #929292; font-size: 12px;
   footer small { position: static; }
 }
 @media (max-width: 734px) {
-  .carousel-dock { bottom: 20px; margin-top: -76px; margin-bottom: 20px; }
+  .carousel-dock { bottom: 20px; margin-top: 32px; }
   .carousel-dots button[aria-selected='true'] { width: 48px; }
   .carousel-dots button[aria-selected='true'] .carousel-dot { width: 32px; }
   body { font-size: 17px; }
