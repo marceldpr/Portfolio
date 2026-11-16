@@ -10,24 +10,24 @@ colors:
   background: "#1C1C1C"
   surface: "#2A2929"
   control: "#3B3B3B"
-  text: "#FFFFFF"
-  muted: "#AAAAAA"
+  text: "#F5F5F7"
+  muted: "#86868B"
   eyebrow: "#9E9B9B"
-  accent: "#0095FF"
+  accent: "#2997FF"
 typography:
   display:
     fontFamily: Inter
-    fontSize: 40px
+    fontSize: 48px
     fontWeight: 600
   heading:
     fontFamily: Inter
-    fontSize: 32px
+    fontSize: 48px
     fontWeight: 600
   body:
     fontFamily: Inter
-    fontSize: 20px
+    fontSize: 21px
     fontWeight: 400
-    lineHeight: 28px
+    lineHeight: 29px
   eyebrow:
     fontFamily: Inter
     fontSize: 14px
@@ -76,7 +76,7 @@ Large device demonstrations on rounded charcoal stages. Blue is reserved for num
 
 Colors, desktop typography, and radii above are measured from Figma context. Body text uses {colors.muted} on {colors.background} or {colors.surface}; headings use {colors.text}. Metrics use {colors.accent}. The CTA is a subtle bordered rectangle, while gallery controls and tabs use pills.
 
-Desktop type: 40px/600 hero, 32px/600 sections, 26px/600 highlight copy, 20px/28px regular body, 14px uppercase eyebrow, 60px regular results. Existing local Inter fonts are reused. The next-case footer uses the existing Montreal book face to match its reference treatment.
+The original Figma type scale was superseded by the user-requested Apple typography pass. Desktop type now uses 48px/600 hero and sections, 28px/600 highlight leads, 21px/29px regular supporting copy, 14px uppercase labels, and 60px regular results. Existing local Inter fonts are reused. The next-case footer uses the existing Montreal book face to match its reference treatment.
 
 Elevation comes from surface tone, not box shadows. Only the next-case footer receives a green atmospheric glow. No general status-color or alpha-overlay system is evidenced. Borders are limited to CTAs, metadata separators, and blue numbered markers.
 
@@ -173,3 +173,14 @@ The deployed repository is Vite/static HTML, so this route uses that stack and a
 - `validation.md`: responsive and interaction checks.
 
 Art-direction QA completed: dark band inversion, scoped footer glow, density changes, radius coexistence, weight ceiling, surface-tone elevation, and asymmetric whitespace are documented above. No monochrome code typography or general shadow system is present.
+
+## Apple typography follow-up
+
+The user explicitly selected the Apple reference for font sizes, colors, and weights. Measured live at 1440, 1068, and 390px on 2026-11-16:
+
+- iPhone Duo section headers: 48px/52px, weight 600 on desktop; 40px tablet and 32px mobile.
+- MacBook Pro PROLED XDR Performance heading: 64px/68px desktop, 48px/52px tablet, 40px/44px mobile, weight 600; label 21px/600 (19px mobile).
+- Performance body: 21px/29px regular desktop/tablet, 19px/27px mobile, #6e6e73.
+- Dark text palette: #f5f5f7 primary, #86868b secondary, #2997ff blue.
+
+Applied the Performance treatment to the scroll-reveal problem section, including its centered heading. Other section headings follow the iPhone Duo scale. Local Inter is retained, so font metrics are an adaptation rather than a claim of identical SF Pro rendering. Longer highlight explanations use regular body text beneath semibold leads. Existing dark surfaces, imagery, and controls remain intact. Confidence: high for sampled source values; medium for the mapping to this case study's longer copy.

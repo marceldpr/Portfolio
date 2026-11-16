@@ -45,3 +45,7 @@ Validated at 1440px and 390px: start, quarter, halfway, end, reverse scrubbing, 
 ## Pending content
 
 The remaining videos are not yet supplied. Static product images remain in the demonstration panels; the three AI-production slots intentionally retain the empty surfaces in Figma. No simulated video playback or false play buttons are shown. Mobile composition and alternate tab/disclosure content are implementation interpretations and can be refined during review.
+
+## Apple typography pass
+
+Compared live Apple iPhone Duo and MacBook Pro PROLED XDR text styles at desktop, tablet, and mobile sizes. Updated the test route's type scale, semibold headings, regular supporting copy, off-white/gray text colors, and blue result values. Verified local Inter files contain the declared 400/500/600 weights. Checked widths 1728, 1440, 1068, 734, 390, and 320px for horizontal overflow and highlight text clipping; none found. Reviewed desktop hero and desktop/mobile problem-heading screenshots. Production build and diff whitespace checks passed.
