@@ -32,6 +32,7 @@ document.querySelectorAll('[data-gallery]').forEach((gallery) => {
   const fills = controls.map((control) => control.querySelector('.carousel-progress'));
   const playback = gallery.querySelector('[data-playback]');
   const dock = gallery.querySelector('.carousel-dock');
+  const name = gallery.dataset.carouselName || 'highlights';
   // Apple's static-card fallback; final videos can specify their own duration.
   const duration = (index) => Number(slides[index].dataset.duration || 6250);
   let active = 0;
@@ -52,7 +53,7 @@ document.querySelectorAll('[data-gallery]').forEach((gallery) => {
     });
     const state = ended ? 'ended' : playing ? 'playing' : 'paused';
     playback.dataset.state = state;
-    playback.setAttribute('aria-label', `${ended ? 'Replay' : playing ? 'Pause' : 'Play'} highlights`);
+    playback.setAttribute('aria-label', `${ended ? 'Replay' : playing ? 'Pause' : 'Play'} ${name}`);
   };
   const syncClock = () => {
     cancelAnimationFrame(frame);
@@ -128,21 +129,6 @@ document.querySelectorAll('[data-gallery]').forEach((gallery) => {
     }, { threshold: [0, .35] }).observe(track);
   } else { inView = true; }
   syncClock();
-});
-
-const views = [
-  { image: 'b4841.png', alt: 'The redesigned For You homepage' },
-  { image: '2332e.png', alt: 'TruScope 3D BIM viewer on iPhone' },
-  { image: 'f1e34.png', alt: 'TruScope sheet management on iPhone' },
-];
-document.querySelectorAll('[data-viewer]').forEach((viewer) => {
-  const image = viewer.querySelector('[data-viewer-image]');
-  const controls = [...viewer.querySelectorAll('[data-view]')];
-  controls.forEach((control, index) => control.addEventListener('click', () => {
-    image.src = asset(views[index].image);
-    image.alt = views[index].alt;
-    controls.forEach((button, buttonIndex) => button.setAttribute('aria-current', String(buttonIndex === index)));
-  }));
 });
 
 // Tabs use automatic activation with arrow keys, Home and End.

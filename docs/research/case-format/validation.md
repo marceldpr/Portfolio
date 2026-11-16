@@ -32,6 +32,10 @@ Verified locally: timed advancement, pause preserving progress, manual selection
 
 The user's 19-second screen recording clarified the dock's scroll positioning: it floats at the viewport bottom while the gallery extends below the fold, then settles into normal flow beneath the cards. Removed the negative overlay margin. The resting gap is now 48px on desktop and 32px on mobile. Forward/reverse scrolling was measured: the desktop dock stays 32px above the viewport bottom before settling 48px below the cards; mobile uses 20px and 32px respectively. No horizontal overflow, and manual slide selection still pauses playback.
 
+## Final-result carousel
+
+Applied the same shared carousel controller and floating dock to “Final result / Take a closer look.” Its three product views now slide horizontally and support independent playback, progress, keyboard navigation, and manual-selection pause. Verified desktop docking (32px viewport bottom, 48px resting gap), mobile rendering without overflow, manual selection, timed advancement, and independence from the highlights carousel. Removed the superseded image-swap controller and dot styles. Production build and syntax checks passed.
+
 ## Pending content
 
 Final videos are not yet supplied. Static product images remain in the demonstration panels; the three AI-production slots intentionally retain the empty surfaces in Figma. No simulated video playback or false play buttons are shown. Mobile composition and alternate tab/disclosure content are implementation interpretations and can be refined during review.
