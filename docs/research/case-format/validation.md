@@ -89,3 +89,11 @@ Verified start, midpoint, end, and reverse seeks at 1440px and 390px. Video rema
 ## AR video height correction
 
 Removed the desktop 76svh height cap that cropped the full-width clip. The stage now follows its native 1424:750 ratio with contain sizing, and its sticky offset centers shorter frames or aligns taller frames to the viewport top. Mobile retains its portrait presentation, which preserves the source's full vertical extent. Verified full phone framing at the final frame, full-width bounds, forward seeking, and no overflow at 1728/1440/1068/390px. Desktop heights are now 910px at 1728px width and 758px at 1440px width. Build and diff checks passed.
+
+## Navigation asset refresh
+
+Updated only “From navigation to prioritization” with all nine supplied assets from `06 Navigation`: Sheet Management and 3D BIM viewer AVIFs, Issue/RFI/Inspection card AVIFs, and the two MP4 demos with their AVIF posters. The existing product tabs now load the new screens. Paired videos loop muted while in view, pause offscreen/in a hidden tab, and expose individual play/pause controls. Explicit pause persists on revisit; reduced-motion users start paused with posters, with manual playback available. Native controls remain available without JavaScript.
+
+Verified both tab images decode, all three card images decode, both videos play, manual/offscreen/reduced-motion pause, and 44px mobile controls without horizontal overflow. Reviewed desktop homepage and demo panels plus the mobile layout. Build, syntax, and whitespace checks passed.
+
+Confirmed the user's clarification: Changing is the left looping MP4 and Add is the right looping MP4; AVIFs are posters/fallbacks. Added explicit image fallbacks for failed video requests or unsupported MP4 playback. Tested both clips wrapping from their final frames back to the beginning while playing, then deliberately blocked both MP4 requests and verified each corresponding AVIF becomes visible.

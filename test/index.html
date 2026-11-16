@@ -119,7 +119,7 @@
       <div class="navigation-demo reveal" data-tabs>
         <div class="media-panel annotated-panel" role="tabpanel" id="homepage-panel" aria-labelledby="sheets-tab">
           <h3 class="panel-title">Homepage</h3>
-          <img class="annotated-phone" src="/assets/img/case-format/b4841.png" alt="For You homepage with deadlines, assigned work, and project navigation" loading="lazy" data-home-image>
+          <img class="annotated-phone" src="/assets/img/case-format/navigation-sheets.avif" alt="For You homepage with deadlines, assigned work, and project navigation" loading="lazy" data-home-image>
           <ol class="annotations">
             <li class="annotation annotation-one"><span class="marker">1</span><div><h4>A homepage built around the user</h4><p>Instead of starting with product navigation, users get an immediate snapshot of the work that needs their attention.</p></div></li>
             <li class="annotation annotation-two"><span class="marker">2</span><div><h4>Deadlines surfaced before they become problems</h4><p>Time-sensitive issues, inspections, and tasks are prioritized so users can act without searching across the product.</p></div></li>
@@ -129,9 +129,23 @@
         </div>
         <div class="segmented-control" role="tablist" aria-label="Homepage product"><button id="sheets-tab" role="tab" aria-selected="true" aria-controls="homepage-panel" data-home="sheets">Sheet management</button><button id="bim-tab" role="tab" aria-selected="false" aria-controls="homepage-panel" tabindex="-1" data-home="bim">3D BIM viewer</button></div>
       </div>
-      <div class="phone-pair reveal"><div class="media-panel"><img src="/assets/img/case-format/b4841.png" alt="Redesigned mobile homepage" loading="lazy"></div><div class="media-panel"><img src="/assets/img/case-format/b4841.png" alt="Shared For You structure across the product" loading="lazy"></div></div>
-      <div class="media-panel issue-panel reveal"><h3 class="panel-title">Issue card</h3><img src="/assets/img/case-format/82b21.png" alt="Issue card with status, deadline, inspection, drawing, and assignee" loading="lazy"><ol class="issue-annotations"><li><span class="marker">1</span><div><h4>Prioritize without opening</h4><p>Surface status, urgency, and deadlines directly in the list.</p></div></li><li><span class="marker">2</span><div><h4>Keep information connected</h4><p>Link issues to their originating inspections and relevant drawings.</p></div></li><li><span class="marker">3</span><div><h4>Make accountability visible</h4><p>Show ownership, trade, and location at a glance.</p></div></li></ol></div>
-      <div class="card-pair reveal"><div class="media-panel"><h3 class="panel-title">RFI card</h3><img src="/assets/img/case-format/add45.png" alt="Request for information card" loading="lazy"></div><div class="media-panel"><h3 class="panel-title">Inspection card</h3><img src="/assets/img/case-format/2df3d.png" alt="Inspection card" loading="lazy"></div></div>
+      <div class="phone-pair reveal"><div class="media-panel" data-demo>
+          <video data-demo-video muted loop playsinline controls preload="none" width="520" height="1080" poster="/assets/img/case-format/navigation-changing.avif" aria-label="TruScope product switching demo"><source src="/assets/video/navigation-changing.mp4" type="video/mp4"></video>
+          <img data-demo-fallback src="/assets/img/case-format/navigation-changing.avif" alt="Switching between TruScope products" width="720" height="1582" loading="lazy" hidden>
+          <button class="carousel-playback demo-playback" data-demo-toggle data-state="paused" aria-label="Play product switching animation" data-demo-label="product switching" hidden>
+            <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>
+          </button>
+        </div><div class="media-panel" data-demo>
+          <video data-demo-video muted loop playsinline controls preload="none" width="520" height="1080" poster="/assets/img/case-format/navigation-add.avif" aria-label="TruScope adding project items demo"><source src="/assets/video/navigation-add.mp4" type="video/mp4"></video>
+          <img data-demo-fallback src="/assets/img/case-format/navigation-add.avif" alt="Adding a project item in TruScope" width="720" height="1582" loading="lazy" hidden>
+          <button class="carousel-playback demo-playback" data-demo-toggle data-state="paused" aria-label="Play adding project items animation" data-demo-label="adding project items" hidden>
+            <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>
+          </button>
+        </div></div>
+      <div class="media-panel issue-panel reveal"><h3 class="panel-title">Issue card</h3><img src="/assets/img/case-format/navigation-issue.avif" alt="Issue card with status, deadline, inspection, drawing, and assignee" loading="lazy"><ol class="issue-annotations"><li><span class="marker">1</span><div><h4>Prioritize without opening</h4><p>Surface status, urgency, and deadlines directly in the list.</p></div></li><li><span class="marker">2</span><div><h4>Keep information connected</h4><p>Link issues to their originating inspections and relevant drawings.</p></div></li><li><span class="marker">3</span><div><h4>Make accountability visible</h4><p>Show ownership, trade, and location at a glance.</p></div></li></ol></div>
+      <div class="card-pair reveal"><div class="media-panel"><h3 class="panel-title">RFI card</h3><img src="/assets/img/case-format/navigation-rfi.avif" alt="Request for information card" loading="lazy"></div><div class="media-panel"><h3 class="panel-title">Inspection card</h3><img src="/assets/img/case-format/navigation-inspection.avif" alt="Inspection card" loading="lazy"></div></div>
     </section>
 
     <section class="section-space wide-width" aria-labelledby="markups-title">

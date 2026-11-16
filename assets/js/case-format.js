@@ -297,7 +297,7 @@ document.querySelectorAll('[data-tabs] [role="tablist"]').forEach((tablist) => {
 document.querySelectorAll('[data-home]').forEach((tab) => tab.addEventListener('click', () => {
   const image = document.querySelector('[data-home-image]');
   const isBim = tab.dataset.home === 'bim';
-  image.src = asset(isBim ? '2332e.png' : 'b4841.png');
+  image.src = asset(isBim ? 'navigation-bim.avif' : 'navigation-sheets.avif');
   image.alt = isBim ? 'TruScope 3D BIM experience and shared navigation' : 'For You homepage with deadlines, assigned work, and project navigation';
   // The numbered notes describe the homepage, so keep them with that view only.
   document.querySelector('.annotations').hidden = isBim;
@@ -316,3 +316,46 @@ document.querySelectorAll('[data-ai]').forEach((tab) => tab.addEventListener('cl
   document.querySelector('[data-ai-title]').textContent = workflow.title;
   document.querySelector('[data-ai-description]').textContent = workflow.description;
 }));
+
+// Short navigation demos play only in view; explicit pause persists on revisit.
+document.querySelectorAll('[data-demo]').forEach((demo) => {
+  const video = demo.querySelector('[data-demo-video]');
+  const button = demo.querySelector('[data-demo-toggle]');
+  let visible = false;
+  let userPaused = reducedMotion.matches;
+  let failed = false;
+  const render = () => {
+    button.dataset.state = video.paused ? 'paused' : 'playing';
+    button.setAttribute('aria-label', `${video.paused ? 'Play' : 'Pause'} ${button.dataset.demoLabel} animation`);
+  };
+  const sync = () => {
+    if (visible && !userPaused && !document.hidden && !failed) video.play().catch(render);
+    else video.pause();
+  };
+  if (!('IntersectionObserver' in window)) return;
+  video.controls = false;
+  button.hidden = false;
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting && entry.intersectionRatio >= .3;
+    sync();
+  }, { threshold: .3 });
+  const fallback = () => {
+    failed = true;
+    observer.disconnect();
+    video.pause();
+    video.hidden = true;
+    button.hidden = true;
+    demo.querySelector('[data-demo-fallback]').hidden = false;
+  };
+  video.addEventListener('error', fallback);
+  video.querySelector('source').addEventListener('error', fallback);
+  if (!video.canPlayType('video/mp4')) fallback();
+  else observer.observe(demo);
+  button.addEventListener('click', () => { userPaused = !video.paused; sync(); });
+  video.addEventListener('play', render);
+  video.addEventListener('pause', render);
+  document.addEventListener('visibilitychange', sync);
+  reducedMotion.addEventListener('change', () => {
+    if (reducedMotion.matches) { userPaused = true; sync(); }
+  });
+});
