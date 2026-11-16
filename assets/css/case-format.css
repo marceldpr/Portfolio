@@ -145,6 +145,7 @@ h4 { font-size: 17px; line-height: 1.4706; font-weight: 400; }
 .phone-pair img, .phone-pair video { height: 737px; max-height: 100%; width: auto; object-fit: contain; }
 .issue-panel { height: 488px; margin-top: 24px; }
 .issue-panel > img { position: absolute; width: 24.23%; top: 137px; left: 38.7%; }
+.issue-connectors { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; fill: none; stroke: #007aff; stroke-width: 2; stroke-linejoin: round; }
 .issue-annotations { margin: 0; padding: 0; list-style: none; }
 .issue-annotations li { position: absolute; display: flex; gap: 16px; width: 25%; font-size: 17px; }
 .issue-annotations p { margin-top: 8px; }
@@ -236,6 +237,7 @@ footer small { position: absolute; right: 24px; color: #929292; font-size: 12px;
   .annotation .marker::after { display: none; }
   .phone-pair .media-panel { height: 580px; }
   .issue-panel { height: auto; padding: 32px; }
+  .issue-connectors { display: none; }
   .issue-panel > img { position: static; width: min(380px, 80%); margin: 40px auto; }
   .issue-annotations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .issue-annotations li { position: static; width: auto; flex-direction: column !important; text-align: left !important; gap: 12px; font-size: 16px; }

@@ -299,8 +299,6 @@ document.querySelectorAll('[data-home]').forEach((tab) => tab.addEventListener('
   const isBim = tab.dataset.home === 'bim';
   image.src = asset(isBim ? 'navigation-bim.avif' : 'navigation-sheets.avif');
   image.alt = isBim ? 'TruScope 3D BIM experience and shared navigation' : 'For You homepage with deadlines, assigned work, and project navigation';
-  // The numbered notes describe the homepage, so keep them with that view only.
-  document.querySelector('.annotations').hidden = isBim;
   document.querySelector('.annotated-panel .panel-title').textContent = isBim ? '3D BIM viewer' : 'Homepage';
 }));
 
@@ -359,3 +357,39 @@ document.querySelectorAll('[data-demo]').forEach((demo) => {
     if (reducedMotion.matches) { userPaused = true; sync(); }
   });
 });
+
+// Keep the Issue card connectors attached as its responsive image changes size.
+const issuePanel = document.querySelector('.issue-panel');
+if (issuePanel) {
+  const image = issuePanel.querySelector('img');
+  const connectors = issuePanel.querySelectorAll('.issue-connectors polyline');
+  const markers = issuePanel.querySelectorAll('.marker');
+  const updateConnectors = () => {
+    const panel = issuePanel.getBoundingClientRect();
+    const card = image.getBoundingClientRect();
+    const left = card.left - panel.left;
+    const right = card.right - panel.left;
+    const top = card.top - panel.top;
+    const bottom = card.bottom - panel.top;
+    markers.forEach((marker, index) => {
+      const bounds = marker.getBoundingClientRect();
+      const x = (index === 0 ? bounds.right : index === 2 ? bounds.left : bounds.left + bounds.width / 2) - panel.left;
+      const y = (index === 1 ? bounds.top : bounds.top + bounds.height / 2) - panel.top;
+      let points;
+      if (index === 1) {
+        points = [[x, y], [x, bottom - card.height * .04]];
+      } else {
+        const edge = index === 0 ? left + card.width * .015 : right - card.width * .015;
+        const bendX = index === 0 ? left - 12 : right + 12;
+        const targetY = top + card.height * (index === 0 ? .53 : .85);
+        points = Math.abs(targetY - y) < 8
+          ? [[x, y], [edge, y]]
+          : [[x, y], [bendX, y], [bendX, targetY], [edge, targetY]];
+      }
+      connectors[index].setAttribute('points', points.map((point) => point.join(',')).join(' '));
+    });
+  };
+  new ResizeObserver(updateConnectors).observe(issuePanel);
+  image.addEventListener('load', updateConnectors);
+  document.fonts.ready.then(updateConnectors);
+}
