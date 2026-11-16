@@ -6,7 +6,7 @@ const asset = (name) => `/assets/img/case-format/${name}`;
 document.querySelectorAll('[data-scroll-reveal]').forEach((scene) => {
   const video = scene.querySelector('[data-scroll-video]');
   const stage = scene.querySelector('.ar-scroll-stage');
-  let failed = !video.canPlayType('video/webm');
+  let failed = !video.canPlayType(video.querySelector('source').type);
   let target = 0;
   let frame = 0;
 

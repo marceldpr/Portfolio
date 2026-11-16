@@ -98,9 +98,9 @@ h4 { font-size: 17px; line-height: 1.4706; font-weight: 400; }
 .problem h2 { font-size: 64px; line-height: 1.0625; letter-spacing: -.009em; }
 .problem .centered-copy { max-width: 980px; color: #6e6e73; }
 .problem .centered-copy p { color: inherit; }
-.ar-scroll-scene { --ar-stage-height: min(76svh, 750px); --ar-stage-top: 12svh; }
+.ar-scroll-scene { --ar-stage-height: min(76svh, 52.67vw); --ar-stage-top: 12svh; }
 .ar-scroll-stage { height: var(--ar-stage-height); position: relative; }
-.ar-scroll-video, .ar-scroll-poster { width: 100%; height: 100%; object-fit: contain; }
+.ar-scroll-video, .ar-scroll-poster { width: 100%; height: 100%; object-fit: cover; }
 .ar-scroll-video { display: none; }
 .ar-scroll-scene[data-enabled='true'] { height: calc(var(--ar-stage-height) + 180svh); }
 .ar-scroll-scene[data-enabled='true'] .ar-scroll-stage { position: sticky; top: var(--ar-stage-top); }
@@ -290,7 +290,7 @@ footer small { position: absolute; right: 24px; color: #929292; font-size: 12px;
   .scope-asides { gap: 32px; }
   .viewer-stage { height: 610px; padding: 24px; }
   .ar-scroll-scene { --ar-stage-height: min(72svh, 620px); --ar-stage-top: 14svh; }
-  .ar-scroll-stage { overflow: hidden; border-radius: 24px; }
+  .ar-scroll-stage { overflow: hidden; }
   .ar-scroll-video, .ar-scroll-poster { object-fit: cover; }
   .centered-copy { margin-top: 32px; text-align: left; }
   .products-composition { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }

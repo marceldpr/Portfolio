@@ -79,3 +79,9 @@ Reviewed updated hero and two-product screenshots. Checked 1728, 1440, 1068, 768
 The four main results count from 0% to +58%, +103%, -92%, and +34% over 1.1 seconds with cubic ease-out, once per card when at least 55% visible. Tabular figures keep digit widths stable. Final text stays in the HTML and in a screen-reader-only span; only the aria-hidden visual span animates. Reduced motion shows final values immediately and cancels active counts if enabled.
 
 Verified initial zeros, intermediate signed values, exact final values, no replay on revisiting, reduced-motion values, accessible final text, and no mobile overflow. Build, JavaScript syntax, and diff checks passed.
+
+## Full-width AR video v7
+
+Replaced the active scroll reveal with the supplied `TruScope_AR_scroll_reveal_v7.mp4` (8.2 seconds, about 24 MB), retaining its existing fast-start MP4 layout. Updated codec detection to read the actual source MIME type. Extracted new start/final JPEG posters from that clip. The media now sits outside the text-width wrapper and reaches both viewport edges, with square edges and centered cover framing; headings and explanatory copy retain their reading widths.
+
+Verified start, midpoint, end, and reverse seeks at 1440px and 390px. Video remains paused and is controlled by scrolling. Media bounds are exactly 0 to viewport width, with no horizontal overflow. Reviewed desktop/mobile frames; reduced-motion mode uses the new final poster. Build, syntax, and diff checks passed.
