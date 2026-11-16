@@ -113,7 +113,7 @@ At 1728px, body copy is approximately 1446px wide and media stages 1568px wide. 
 
 ### Apple reference observations
 
-The reference uses horizontal mandatory scroll snapping, tab-based gallery navigation, rounded media surfaces, and a sticky product navigation. Clicking the iOS highlight updates selected state and scrolls the gallery. Its stylesheet's main breakpoints are 1068px and 734px, with larger-screen adjustments at 1441px. Measured highlight headings were 48/40/32px at desktop/tablet/mobile; cards measured 1260px at 1440, 934.5px at 1068, and 321.25px at 390. These patterns inform responsive behavior; Figma remains the visual source. The test does not add a product purchase bar, scroll locking, or autoplay without final videos.
+The reference uses horizontal mandatory scroll snapping, tab-based gallery navigation, rounded media surfaces, and a sticky product navigation. Clicking the iOS highlight updates selected state and scrolls the gallery. Its stylesheet's main breakpoints are 1068px and 734px, with larger-screen adjustments at 1441px. Measured highlight headings were 48/40/32px at desktop/tablet/mobile; cards measured 1260px at 1440, 934.5px at 1068, and 321.25px at 390. These patterns inform responsive behavior; Figma remains the visual source. The test does not add a product purchase bar, scroll locking, or video playback without final videos. The highlights slideshow now auto-advances its static cards with a 6.25-second fallback and explicit play/pause/replay control, following the subsequent user request.
 
 ### Responsive interpretation
 

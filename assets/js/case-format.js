@@ -29,27 +29,105 @@ document.querySelectorAll('[data-gallery]').forEach((gallery) => {
   const track = gallery.querySelector('[data-track]');
   const slides = [...track.children];
   const controls = [...gallery.querySelectorAll('[data-slide]')];
+  const fills = controls.map((control) => control.querySelector('.carousel-progress'));
+  const playback = gallery.querySelector('[data-playback]');
+  const dock = gallery.querySelector('.carousel-dock');
+  // Apple's static-card fallback; final videos can specify their own duration.
+  const duration = (index) => Number(slides[index].dataset.duration || 6250);
   let active = 0;
-  let scheduled = false;
-  const moveTo = (index) => {
+  let elapsed = 0;
+  let playing = !reducedMotion.matches;
+  let ended = false;
+  let inView = false;
+  let frame = 0;
+  let lastTime = 0;
+  let settling = 0;
+  let destination = null;
+
+  const render = () => {
+    controls.forEach((control, index) => {
+      control.setAttribute('aria-selected', String(index === active));
+      control.tabIndex = index === active ? 0 : -1;
+      fills[index].style.transform = `scaleX(${index === active ? elapsed / duration(active) : 0})`;
+    });
+    const state = ended ? 'ended' : playing ? 'playing' : 'paused';
+    playback.dataset.state = state;
+    playback.setAttribute('aria-label', `${ended ? 'Replay' : playing ? 'Pause' : 'Play'} highlights`);
+  };
+  const syncClock = () => {
+    cancelAnimationFrame(frame);
+    lastTime = 0;
+    render();
+    if (playing && inView && !document.hidden) frame = requestAnimationFrame(tick);
+  };
+  const pause = () => { playing = false; syncClock(); };
+  const select = (index, manual = false) => {
+    if (manual) playing = false;
+    if (index !== active || ended) elapsed = 0;
+    active = index;
+    ended = false;
+    destination = index;
     const padding = parseFloat(getComputedStyle(track).paddingLeft);
     track.scrollTo({ left: slides[index].offsetLeft - track.offsetLeft - padding, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+    // A no-op scroll does not fire scrollend.
+    clearTimeout(settling);
+    settling = setTimeout(settle, 700);
+    syncClock();
   };
-  const update = () => {
+  function tick(now) {
+    if (lastTime && destination === null) elapsed = Math.min(duration(active), elapsed + now - lastTime);
+    lastTime = now;
+    fills[active].style.transform = `scaleX(${elapsed / duration(active)})`;
+    if (elapsed >= duration(active)) {
+      if (active < slides.length - 1) { select(active + 1); return; }
+      playing = false;
+      ended = true;
+      syncClock();
+      return;
+    }
+    frame = requestAnimationFrame(tick);
+  }
+  function settle() {
+    clearTimeout(settling);
     const start = track.getBoundingClientRect().left + parseFloat(getComputedStyle(track).paddingLeft);
-    active = slides.reduce((nearest, slide, index) => Math.abs(slide.getBoundingClientRect().left - start) < Math.abs(slides[nearest].getBoundingClientRect().left - start) ? index : nearest, 0);
-    controls.forEach((control, index) => control.setAttribute('aria-current', String(index === active)));
-    scheduled = false;
-  };
-  controls.forEach((control, index) => control.addEventListener('click', () => moveTo(index)));
-  track.addEventListener('scroll', () => {
-    if (!scheduled) { scheduled = true; requestAnimationFrame(update); }
-  }, { passive: true });
-  track.addEventListener('keydown', (event) => {
-    const destinations = { ArrowRight: Math.min(active + 1, slides.length - 1), ArrowLeft: Math.max(active - 1, 0), Home: 0, End: slides.length - 1 };
-    if (event.key in destinations) { event.preventDefault(); moveTo(destinations[event.key]); }
+    const nearest = slides.reduce((best, slide, index) => Math.abs(slide.getBoundingClientRect().left - start) < Math.abs(slides[best].getBoundingClientRect().left - start) ? index : best, 0);
+    if (nearest !== active) { active = nearest; elapsed = 0; ended = false; }
+    destination = null;
+    render();
+  }
+  const interrupt = () => { destination = null; pause(); };
+  controls.forEach((control, index) => {
+    control.addEventListener('click', () => { if (index !== active) select(index, true); });
+    control.addEventListener('keydown', (event) => {
+      const targets = { ArrowRight: (index + 1) % slides.length, ArrowLeft: (index - 1 + slides.length) % slides.length, Home: 0, End: slides.length - 1 };
+      if (event.key in targets) { event.preventDefault(); controls[targets[event.key]].focus(); select(targets[event.key], true); }
+    });
   });
-  window.addEventListener('resize', update, { passive: true });
+  playback.addEventListener('click', () => {
+    if (ended) { playing = true; select(0); }
+    else { playing = !playing; syncClock(); }
+  });
+  track.addEventListener('pointerdown', interrupt, { passive: true });
+  track.addEventListener('wheel', (event) => { if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) interrupt(); }, { passive: true });
+  track.addEventListener('scroll', () => { clearTimeout(settling); settling = setTimeout(settle, 150); }, { passive: true });
+  track.addEventListener('scrollend', settle);
+  track.addEventListener('keydown', (event) => {
+    const targets = { ArrowRight: Math.min(active + 1, slides.length - 1), ArrowLeft: Math.max(active - 1, 0), Home: 0, End: slides.length - 1 };
+    if (event.key in targets) { event.preventDefault(); select(targets[event.key], true); }
+  });
+  gallery.addEventListener('focusin', (event) => { if (event.target !== playback) pause(); });
+  document.addEventListener('visibilitychange', syncClock);
+  reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) pause(); });
+  window.addEventListener('resize', () => select(active), { passive: true });
+  if ('IntersectionObserver' in window) {
+    dock.dataset.ready = 'false';
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting && entry.intersectionRatio >= .35;
+      dock.dataset.ready = String(inView);
+      syncClock();
+    }, { threshold: [0, .35] }).observe(track);
+  } else { inView = true; }
+  syncClock();
 });
 
 const views = [
@@ -68,7 +146,7 @@ document.querySelectorAll('[data-viewer]').forEach((viewer) => {
 });
 
 // Tabs use automatic activation with arrow keys, Home and End.
-document.querySelectorAll('[role="tablist"]').forEach((tablist) => {
+document.querySelectorAll('[data-tabs] [role="tablist"]').forEach((tablist) => {
   const tabs = [...tablist.querySelectorAll('[role="tab"]')];
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => {

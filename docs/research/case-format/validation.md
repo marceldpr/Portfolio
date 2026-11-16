@@ -24,6 +24,12 @@ New `/test/` route only. Existing homepage and five case HTML files, shared styl
 - No page JavaScript errors during interaction checks.
 - Prototype links use the existing iOS URL and the user-supplied web URL, opening in a new tab with `noopener noreferrer`.
 
+## Carousel control follow-up
+
+Apple's live control was re-inspected after the request to match its behavior. The highlights now use a 56px frosted pill and separate 56px playback button, a 48px expanding progress track (32px on mobile), 32px desktop/20px mobile sticky bottom offsets, and a 6.25-second static-slide duration based on the reference's CSS fallback. Manual dot selection pauses playback. Play resumes, automatic progression stops at the final card, and Replay returns to the start. Playback suspends off-screen and in hidden browser tabs. Reduced-motion users start paused.
+
+Verified locally: timed advancement, pause preserving progress, manual selection pausing, final-slide completion and replay, off-screen suspension, arrow-key selection, reduced-motion initial state, and mobile overflow. Desktop/mobile screenshots reviewed. Build and JavaScript syntax checks passed.
+
 ## Pending content
 
 Final videos are not yet supplied. Static product images remain in the demonstration panels; the three AI-production slots intentionally retain the empty surfaces in Figma. No simulated video playback or false play buttons are shown. Mobile composition and alternate tab/disclosure content are implementation interpretations and can be refined during review.
