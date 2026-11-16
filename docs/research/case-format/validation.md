@@ -36,6 +36,12 @@ The user's 19-second screen recording clarified the dock's scroll positioning: i
 
 Applied the same shared carousel controller and floating dock to “Final result / Take a closer look.” Its three product views now slide horizontally and support independent playback, progress, keyboard navigation, and manual-selection pause. Verified desktop docking (32px viewport bottom, 48px resting gap), mobile rendering without overflow, manual selection, timed advancement, and independence from the highlights carousel. Removed the superseded image-swap controller and dot styles. Production build and syntax checks passed.
 
+## AR scroll reveal
+
+Replaced the static image in “From augmented reality to sheet management” with the supplied `TruScope_scroll_reveal_transparent.webm` (1424 × 750, 7.5 seconds). The video stays paused: scroll progress seeks its timeline forward or backward while the visual stage is sticky, then releases into the explanatory text. The original alpha channel is preserved. First/final poster frames were extracted from the supplied clip.
+
+Validated at 1440px and 390px: start, quarter, halfway, end, reverse scrubbing, sticky positioning, transparent corners, and no horizontal overflow. Reduced-motion mode removes the scroll runway and shows the final poster; a deliberately failed video request also falls back to that image. Build and syntax checks passed.
+
 ## Pending content
 
-Final videos are not yet supplied. Static product images remain in the demonstration panels; the three AI-production slots intentionally retain the empty surfaces in Figma. No simulated video playback or false play buttons are shown. Mobile composition and alternate tab/disclosure content are implementation interpretations and can be refined during review.
+The remaining videos are not yet supplied. Static product images remain in the demonstration panels; the three AI-production slots intentionally retain the empty surfaces in Figma. No simulated video playback or false play buttons are shown. Mobile composition and alternate tab/disclosure content are implementation interpretations and can be refined during review.

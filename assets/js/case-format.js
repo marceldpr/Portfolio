@@ -1,6 +1,47 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const asset = (name) => `/assets/img/case-format/${name}`;
 
+// Scrub the supplied reveal in both directions while its stage stays in view.
+// A static final frame remains available without scripting, motion, or codec support.
+document.querySelectorAll('[data-scroll-reveal]').forEach((scene) => {
+  const video = scene.querySelector('[data-scroll-video]');
+  const stage = scene.querySelector('.ar-scroll-stage');
+  let failed = !video.canPlayType('video/webm');
+  let target = 0;
+  let frame = 0;
+
+  const seek = () => {
+    if (scene.dataset.enabled !== 'true' || video.readyState < 2 || video.seeking) return;
+    if (Math.abs(video.currentTime - target) > 1 / 60) video.currentTime = target;
+  };
+  const update = () => {
+    frame = 0;
+    if (scene.dataset.enabled !== 'true' || !Number.isFinite(video.duration)) return;
+    const distance = scene.offsetHeight - stage.offsetHeight;
+    const start = parseFloat(getComputedStyle(stage).top);
+    const progress = Math.max(0, Math.min(1, (start - scene.getBoundingClientRect().top) / distance));
+    target = progress * Math.max(0, video.duration - 1 / 30);
+    seek();
+  };
+  const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+  const configure = () => {
+    video.pause();
+    scene.dataset.enabled = String(!failed && !reducedMotion.matches);
+    schedule();
+  };
+  video.addEventListener('loadeddata', schedule);
+  video.addEventListener('durationchange', schedule);
+  video.addEventListener('seeked', seek);
+  const fallback = () => { failed = true; configure(); };
+  video.addEventListener('error', fallback);
+  video.querySelector('source').addEventListener('error', fallback);
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule, { passive: true });
+  window.addEventListener('pageshow', schedule);
+  reducedMotion.addEventListener('change', configure);
+  configure();
+});
+
 // Content stays visible if scripting or IntersectionObserver is unavailable.
 if ('IntersectionObserver' in window && !reducedMotion.matches) {
   const observer = new IntersectionObserver((entries) => {
