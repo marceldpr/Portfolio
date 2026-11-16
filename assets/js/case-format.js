@@ -92,7 +92,7 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
       }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal, .stagger-reveal').forEach((element) => {
+  document.querySelectorAll('.reveal').forEach((element) => {
     if (element.getBoundingClientRect().top > window.innerHeight) {
       element.classList.add('is-pending');
       observer.observe(element);
@@ -104,6 +104,27 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
       observer.disconnect();
     }
   });
+}
+
+// Reveal the product text inside the reading area, and re-arm it after the
+// reader scrolls back above the group. Keep child motion separate from parallax.
+if ('IntersectionObserver' in window) {
+  const groups = [...document.querySelectorAll('.stagger-reveal')];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio >= .15) entry.target.classList.remove('is-pending');
+      else if (entry.boundingClientRect.top >= innerHeight * .82) entry.target.classList.add('is-pending');
+    });
+  }, { rootMargin: '0px 0px -18% 0px', threshold: .15 });
+  const configure = () => {
+    observer.disconnect();
+    groups.forEach((group) => {
+      group.classList.toggle('is-pending', !reducedMotion.matches);
+      if (!reducedMotion.matches) observer.observe(group);
+    });
+  };
+  reducedMotion.addEventListener('change', configure);
+  configure();
 }
 
 document.querySelectorAll('[data-gallery]').forEach((gallery) => {

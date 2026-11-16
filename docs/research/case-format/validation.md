@@ -61,3 +61,9 @@ Verified forward/reverse samples at 1440, 768, and 390px; returning to the same 
 Reduced the composition's top margin from 48px to 32px and moved the lower phone up 96px on desktop (64px on tablet), reducing the feature-label-to-phone gap from 282px to 186px at 1440px. The composition height follows that change; mobile row spacing is reduced to 16px. Added independent staggered fade/30px rise transitions to the introduction's text elements and each feature item, with 100ms steps. Child transitions leave the parent's scroll-linked parallax transform intact.
 
 Verified intermediate staggered opacity values, final fully visible state, no overflow at 1440/768/390/320px, and cancellation of motion with fully visible content under reduced-motion preference. Reviewed the tighter desktop composition. Build, syntax, and whitespace checks passed.
+
+## More visible spacing/reveal refinement
+
+Confirmed the previous CSS was live. Reduced the desktop feature-label-to-phone gap again, from 186px to 90px, and the composition top margin to 24px. Revised tablet phone position and container height to prevent label overlap while keeping the full phone inside the composition.
+
+Staggered groups now use a separate observer with an 18% bottom inset and 15% visibility threshold; they re-arm when scrolled back below the reading area. Child fade/rise duration is 1s with 150ms stagger, and hidden setup is instantaneous. Repeated scroll-out/scroll-in checks measured opacity 0 → staggered intermediate values → 1 on both passes. Reduced-motion content stays fully visible. Checked tablet containment and widths 1728/1068/768/735/390/320 for horizontal overflow. Build, syntax, and whitespace checks passed.
