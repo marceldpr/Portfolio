@@ -24,10 +24,10 @@ typography:
     fontSize: 48px
     fontWeight: 600
   body:
-    fontFamily: Inter
-    fontSize: 21px
+    fontFamily: system-ui
+    fontSize: 17px
     fontWeight: 400
-    lineHeight: 29px
+    lineHeight: 25px
   eyebrow:
     fontFamily: Inter
     fontSize: 14px
@@ -184,3 +184,9 @@ The user explicitly selected the Apple reference for font sizes, colors, and wei
 - Dark text palette: #f5f5f7 primary, #86868b secondary, #2997ff blue.
 
 Applied the Performance treatment to the scroll-reveal problem section, including its centered heading. Other section headings follow the iPhone Duo scale. Local Inter is retained, so font metrics are an adaptation rather than a claim of identical SF Pro rendering. Longer highlight explanations use regular body text beneath semibold leads. Existing dark surfaces, imagery, and controls remain intact. Confidence: high for sampled source values; medium for the mapping to this case study's longer copy.
+
+## Body and subtitle correction
+
+A second comparison found that the initial Apple pass applied the 21px introductory style too broadly. Apple's iPhone Duo standard product-view copy is 17px/25px at weight 400; camera-stat captions are 14px at weight 400. Its 21px/29px introductory copy uses SF Pro Display, whereas our Inter rendering was visibly different.
+
+The test route now uses a native system-font stack for body and supporting text, with 17px/25px regular body, 19px/27px regular hero description, 14px/20px feature captions, and regular annotation/subtitle headings. Apple-style antialiasing is enabled. Display headings retain Inter. The 19px hero description is a deliberate adaptation requested for smaller supporting text, not an exact desktop reference size. Platform font rendering varies; we do not claim a pixel-identical SF Pro web-font match.

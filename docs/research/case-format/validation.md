@@ -67,3 +67,9 @@ Verified intermediate staggered opacity values, final fully visible state, no ov
 Confirmed the previous CSS was live. Reduced the desktop feature-label-to-phone gap again, from 186px to 90px, and the composition top margin to 24px. Revised tablet phone position and container height to prevent label overlap while keeping the full phone inside the composition.
 
 Staggered groups now use a separate observer with an 18% bottom inset and 15% visibility threshold; they re-arm when scrolled back below the reading area. Child fade/rise duration is 1s with 150ms stagger, and hidden setup is instantaneous. Repeated scroll-out/scroll-in checks measured opacity 0 → staggered intermediate values → 1 on both passes. Reduced-motion content stays fully visible. Checked tablet containment and widths 1728/1068/768/735/390/320 for horizontal overflow. Build, syntax, and whitespace checks passed.
+
+## Body and subtitle correction
+
+Re-measured Apple iPhone Duo's text styles: standard body 17px/25px regular, intro 21px/29px regular, feature captions 14px regular, and antialiased smoothing. Replaced the overly broad 21px Inter body treatment with a native system-font stack and 17px regular body. Hero description is 19px regular; secondary text headings are regular, and feature captions are 14px. Retained the 90px desktop feature-to-phone gap after captions shrank.
+
+Reviewed updated hero and two-product screenshots. Checked 1728, 1440, 1068, 768, 390, and 320px: no horizontal overflow; computed body 17px, hero description weight 400, captions 14px. Production build and whitespace checks passed.
