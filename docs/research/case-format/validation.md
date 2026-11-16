@@ -85,3 +85,7 @@ Verified initial zeros, intermediate signed values, exact final values, no repla
 Replaced the active scroll reveal with the supplied `TruScope_AR_scroll_reveal_v7.mp4` (8.2 seconds, about 24 MB), retaining its existing fast-start MP4 layout. Updated codec detection to read the actual source MIME type. Extracted new start/final JPEG posters from that clip. The media now sits outside the text-width wrapper and reaches both viewport edges, with square edges and centered cover framing; headings and explanatory copy retain their reading widths.
 
 Verified start, midpoint, end, and reverse seeks at 1440px and 390px. Video remains paused and is controlled by scrolling. Media bounds are exactly 0 to viewport width, with no horizontal overflow. Reviewed desktop/mobile frames; reduced-motion mode uses the new final poster. Build, syntax, and diff checks passed.
+
+## AR video height correction
+
+Removed the desktop 76svh height cap that cropped the full-width clip. The stage now follows its native 1424:750 ratio with contain sizing, and its sticky offset centers shorter frames or aligns taller frames to the viewport top. Mobile retains its portrait presentation, which preserves the source's full vertical extent. Verified full phone framing at the final frame, full-width bounds, forward seeking, and no overflow at 1728/1440/1068/390px. Desktop heights are now 910px at 1728px width and 758px at 1440px width. Build and diff checks passed.
