@@ -26,6 +26,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
+        caseFormatTest: 'test/index.html',
         alana: 'work/alana-platform/index.html',
         copilot: 'work/copilot-agent-builder/index.html',
         alanaDS: 'work/alana-design-system/index.html',
