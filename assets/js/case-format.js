@@ -61,8 +61,8 @@ document.querySelectorAll('[data-phone-parallax]').forEach((scene) => {
     const mobile = matchMedia('(max-width: 734px)').matches;
     const travel = mobile ? 48 : 300 * Math.min(1, scene.clientWidth / 965);
     const tracks = [
-      [scene.querySelector('.product-sheets'), travel, -travel],
-      [scene.querySelector('.product-ar'), -travel / 10, travel / 10],
+      [scene.querySelector('.product-left'), travel, -travel],
+      [scene.querySelector('.product-right'), -travel / 10, travel / 10],
     ];
     if (!mobile) tracks.push([scene.querySelector('.principles'), travel, -travel]);
     animations = tracks.map(([element, from, to]) => {
