@@ -127,6 +127,44 @@ if ('IntersectionObserver' in window) {
   configure();
 }
 
+// Keep final results available to assistive technology and without animation.
+// Each card counts once, when enough of it is visible to read.
+if ('IntersectionObserver' in window && !reducedMotion.matches) {
+  const counters = [...document.querySelectorAll('[data-count-up]')].map((element) => ({
+    element, final: element.textContent, target: parseInt(element.textContent, 10), frame: 0,
+  }));
+  const finish = (counter) => {
+    cancelAnimationFrame(counter.frame);
+    counter.element.textContent = counter.final;
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting || entry.intersectionRatio < .55) return;
+      observer.unobserve(entry.target);
+      const counter = counters.find(({ element }) => element.closest('.stat') === entry.target);
+      const started = performance.now();
+      const tick = (now) => {
+        const progress = Math.min(1, (now - started) / 1100);
+        const value = Math.round(Math.abs(counter.target) * (1 - Math.pow(1 - progress, 3)));
+        const sign = value === 0 ? '' : counter.target < 0 ? '-' : '+';
+        counter.element.textContent = `${sign}${value}%`;
+        if (progress < 1) counter.frame = requestAnimationFrame(tick);
+        else finish(counter);
+      };
+      counter.frame = requestAnimationFrame(tick);
+    });
+  }, { threshold: .55 });
+  counters.forEach((counter) => {
+    counter.element.textContent = '0%';
+    observer.observe(counter.element.closest('.stat'));
+  });
+  reducedMotion.addEventListener('change', () => {
+    if (!reducedMotion.matches) return;
+    observer.disconnect();
+    counters.forEach(finish);
+  });
+}
+
 document.querySelectorAll('[data-gallery]').forEach((gallery) => {
   const track = gallery.querySelector('[data-track]');
   const slides = [...track.children];
