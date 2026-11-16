@@ -92,7 +92,7 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
       }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach((element) => {
+  document.querySelectorAll('.reveal, .stagger-reveal').forEach((element) => {
     if (element.getBoundingClientRect().top > window.innerHeight) {
       element.classList.add('is-pending');
       observer.observe(element);

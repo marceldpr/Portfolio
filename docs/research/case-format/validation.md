@@ -55,3 +55,9 @@ Compared live Apple iPhone Duo and MacBook Pro PROLED XDR text styles at desktop
 Matched the camera-stat composition in the user's 11:56:44 recording of Apple's iPhone Duo page. The sheet-management phone and desktop principles move upward faster than normal scrolling while the AR phone drifts gently in the opposite direction. Paused Web Animations are scrubbed from section position, so forward/reverse scrolling is deterministic and no animation runs while idle. Desktop travel scales with the composition width; mobile uses a gentler 48px range and stationary principles. Removed the phones' competing one-shot reveal transforms.
 
 Verified forward/reverse samples at 1440, 768, and 390px; returning to the same scroll position restores the same transforms. No horizontal overflow. Changing reduced-motion preference cancels all three animations and restores the static composition. Reviewed desktop/mobile screenshots. Build, JavaScript syntax, and diff checks passed.
+
+## Phone spacing and text reveal refinement
+
+Reduced the composition's top margin from 48px to 32px and moved the lower phone up 96px on desktop (64px on tablet), reducing the feature-label-to-phone gap from 282px to 186px at 1440px. The composition height follows that change; mobile row spacing is reduced to 16px. Added independent staggered fade/30px rise transitions to the introduction's text elements and each feature item, with 100ms steps. Child transitions leave the parent's scroll-linked parallax transform intact.
+
+Verified intermediate staggered opacity values, final fully visible state, no overflow at 1440/768/390/320px, and cancellation of motion with fully visible content under reduced-motion preference. Reviewed the tighter desktop composition. Build, syntax, and whitespace checks passed.
