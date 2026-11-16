@@ -42,6 +42,46 @@ document.querySelectorAll('[data-scroll-reveal]').forEach((scene) => {
   configure();
 });
 
+// Match the camera-section parallax: the left phone and details travel together,
+// while the right phone drifts in the opposite direction. Scroll reverses the motion.
+document.querySelectorAll('[data-phone-parallax]').forEach((scene) => {
+  let animations = [];
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const bounds = scene.getBoundingClientRect();
+    const progress = Math.max(0, Math.min(1, (innerHeight - bounds.top) / (innerHeight + bounds.height)));
+    animations.forEach((animation) => { animation.currentTime = progress * 1000; });
+  };
+  const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+  const configure = () => {
+    animations.forEach((animation) => animation.cancel());
+    animations = [];
+    if (reducedMotion.matches) return;
+    const mobile = matchMedia('(max-width: 734px)').matches;
+    const travel = mobile ? 48 : 300 * Math.min(1, scene.clientWidth / 965);
+    const tracks = [
+      [scene.querySelector('.product-sheets'), travel, -travel],
+      [scene.querySelector('.product-ar'), -travel / 10, travel / 10],
+    ];
+    if (!mobile) tracks.push([scene.querySelector('.principles'), travel, -travel]);
+    animations = tracks.map(([element, from, to]) => {
+      const animation = element.animate([
+        { transform: `translateY(${from}px)` },
+        { transform: `translateY(${to}px)` },
+      ], { duration: 1000, fill: 'both', easing: 'linear' });
+      animation.pause();
+      return animation;
+    });
+    update();
+  };
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', configure, { passive: true });
+  window.addEventListener('pageshow', schedule);
+  reducedMotion.addEventListener('change', configure);
+  configure();
+});
+
 // Content stays visible if scripting or IntersectionObserver is unavailable.
 if ('IntersectionObserver' in window && !reducedMotion.matches) {
   const observer = new IntersectionObserver((entries) => {

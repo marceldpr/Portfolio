@@ -49,3 +49,9 @@ The remaining videos are not yet supplied. Static product images remain in the d
 ## Apple typography pass
 
 Compared live Apple iPhone Duo and MacBook Pro PROLED XDR text styles at desktop, tablet, and mobile sizes. Updated the test route's type scale, semibold headings, regular supporting copy, off-white/gray text colors, and blue result values. Verified local Inter files contain the declared 400/500/600 weights. Checked widths 1728, 1440, 1068, 734, 390, and 320px for horizontal overflow and highlight text clipping; none found. Reviewed desktop hero and desktop/mobile problem-heading screenshots. Production build and diff whitespace checks passed.
+
+## Two-products phone parallax
+
+Matched the camera-stat composition in the user's 11:56:44 recording of Apple's iPhone Duo page. The sheet-management phone and desktop principles move upward faster than normal scrolling while the AR phone drifts gently in the opposite direction. Paused Web Animations are scrubbed from section position, so forward/reverse scrolling is deterministic and no animation runs while idle. Desktop travel scales with the composition width; mobile uses a gentler 48px range and stationary principles. Removed the phones' competing one-shot reveal transforms.
+
+Verified forward/reverse samples at 1440, 768, and 390px; returning to the same scroll position restores the same transforms. No horizontal overflow. Changing reduced-motion preference cancels all three animations and restores the static composition. Reviewed desktop/mobile screenshots. Build, JavaScript syntax, and diff checks passed.
