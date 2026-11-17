@@ -29,7 +29,7 @@ h4 { font-size: 17px; line-height: 1.4706; font-weight: 400; }
 .wide-width { width: 87.5%; max-width: 1260px; margin-inline: auto; }
 .section-space { padding-block: var(--section-space); }
 /* Adjacent stories share a surface, so their section padding must not double up. */
-.section-space:has(+ .section-space):not(.highlights, .results) { padding-bottom: 0; }
+.section-space:has(+ .section-space, + .case-soft):not(.highlights, .results) { padding-bottom: 0; }
 .section-heading { margin-bottom: var(--heading-space); }
 .narrow-copy { max-width: 840px; }
 .inset-copy { margin-inline: 8.3333%; }
@@ -46,6 +46,9 @@ h4 { font-size: 17px; line-height: 1.4706; font-weight: 400; }
 .case-light .principles img { filter: brightness(0); opacity: .88; }
 .case-light .segmented-control :focus-visible { outline-color: var(--button); }
 .case-light .media-panel, .case-light .phone-pair .media-panel[data-demo] { background: var(--panel); }
+/* Ease from the white narrative into white panels on a soft gray canvas. */
+.case-soft { --panel: #fff; background: #f5f5f7; }
+.markups-section { --panel: #f5f5f7; background: linear-gradient(to bottom, #fff 0%, #fdfdfe 25%, #f8f8fa 65%, #f5f5f7 100%); }
 .sr-only, .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .skip-link:focus { position: fixed; z-index: 10; top: 16px; left: 16px; background: #fff; color: #111; padding: 12px 20px; }
 .site-nav { position: absolute; inset: 24px 3.2% auto; display: flex; justify-content: space-between; font: 20px Montreal, Arial, sans-serif; }

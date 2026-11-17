@@ -121,3 +121,7 @@ Verified all eleven light-section media panels compute to rgb(245,245,247), with
 ## Scroll-driven principle fades — 2026-11-17
 
 Replaced the three principle items’ timed stagger entrance with paused opacity animations driven by their viewport position. Each icon/caption pair fades at the bottom and top edges, stays fully visible in the middle, and reverses with scroll direction. Existing parent parallax stays separate. Verified hidden, intermediate, fully visible, exiting, and reverse-scroll states at 1440px and 390px; reduced-motion changes restore opacity 1 immediately. Build, JavaScript syntax, and diff checks passed.
+
+## Subtle Markups-to-AI background transition — 2026-11-17
+
+Added a full-width white-to-#f5f5f7 gradient through Markups. The AI and production sections continue on #f5f5f7 with #fff media panels. Earlier narrative sections retain their white canvas and gray panels. Desktop section positions and heights are unchanged. Reviewed desktop/mobile AI panels and the Markups transition; verified computed colors, working AI tabs, and no horizontal overflow at 320/390/768/1068/1440px. Production build and diff checks passed. All browser checks used temporary contexts closed after inspection.
