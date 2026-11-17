@@ -1,0 +1,91 @@
+/* Bruno's editorial columns and long, unboxed product compositions. */
+.t2-experience { padding: 173px 0 160px; }
+.t2-experience-intro { display: grid; grid-template-columns: 297px 1fr 1fr; gap: 48px; align-items: start; }
+.t2-experience-intro p { max-width: 275px; margin: 0; }
+.t2-homepage { display: grid; grid-template-columns: 1fr 1fr; gap: 138px; align-items: start; margin-top: 120px; }
+.t2-homepage-device { position: sticky; top: 120px; }
+.t2-home-tabs { display: flex; justify-content: center; gap: 24px; margin-bottom: 34px; }
+.t2-home-tabs button { padding: 12px 0; background: none; border: 0; border-bottom: 1px solid transparent; color: #777; font-size: 13px; white-space: nowrap; transition: color .2s, border-color .2s; }
+.t2-home-tabs button:hover, .t2-home-tabs button[aria-selected='true'] { color: #000; border-bottom-color: currentColor; }
+.t2-home-panel img { width: 340px; height: auto; margin: 0 auto; }
+.t2-home-panel:focus-visible { outline: 2px solid #0066cc; outline-offset: 10px; }
+.t2-home-notes { display: flex; flex-direction: column; gap: 72px; margin: 48px 0 0; padding: 0 0 60px; list-style: none; }
+.t2-home-notes li { display: grid; grid-template-columns: 28px 1fr; gap: 22px; align-items: start; }
+.t2-home-notes li > span { padding-top: 10px; font-size: 11px; letter-spacing: 1px; color: #777; }
+.t2-home-notes h3 { font-size: 28px; line-height: 1.2; }
+.t2-home-notes p { max-width: 291px; margin-top: 18px; }
+.t2-markups { display: grid; grid-template-columns: 291px minmax(0, 1fr); gap: 112px; align-items: start; padding: 173px 0; border-top: 1px solid var(--line); }
+.t2-markups-copy { position: sticky; top: 160px; }
+.t2-markups-copy > p { margin-top: 26px; }
+.t2-markup-details { margin-top: 48px; }
+.t2-markup-details details { border-top: 1px solid var(--line); }
+.t2-markup-details details:last-child { border-bottom: 1px solid var(--line); }
+.t2-markup-details summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 56px; padding-block: 15px; cursor: pointer; list-style: none; font-weight: 400; }
+.t2-markup-details summary::-webkit-details-marker { display: none; }
+.t2-markup-details summary::after { content: '+'; font-size: 22px; line-height: 1; font-weight: 300; }
+.t2-markup-details details[open] summary::after { content: '−'; }
+.t2-markup-details p { margin: 0; padding-bottom: 24px; color: var(--muted); }
+.t2-markup-devices { display: flex; flex-direction: column; align-items: flex-end; gap: 100px; min-width: 0; }
+.t2-markup-desktop { width: 100%; }
+.t2-markup-phone { width: 280px; margin-right: 65px; }
+.t2-markup-devices img { width: 100%; height: auto; }
+.t2-markup-devices figcaption { margin-top: 20px; font-size: 12px; color: var(--muted); }
+.t2-ai-principles { position: relative; isolation: isolate; overflow: hidden; padding: 150px 0 175px; background: #000; color: #f2f2f2; }
+.t2-ai-heading { max-width: 490px; font-size: 54px; line-height: 1.2; margin-bottom: 100px; }
+.t2-ai-principle-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 70px; }
+.t2-ai-step { display: block; margin-bottom: 26px; font-size: 11px; color: #999; letter-spacing: 1px; }
+.t2-ai-principle-grid h3 { font-size: 34px; line-height: 1.2; }
+.t2-ai-principle-grid p { margin-top: 26px; color: #c2c2c2; }
+.t2-ai-grid-art { position: absolute; inset: auto 0 0; z-index: -1; height: 230px; opacity: .3; background-image: linear-gradient(#343434 1px, transparent 1px), linear-gradient(90deg, #343434 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(transparent, #000); -webkit-mask-image: linear-gradient(transparent, #000); }
+.t2-ai-execution { display: grid; grid-template-columns: 291px minmax(0, 1fr); gap: 112px; align-items: start; padding: 222px 0 173px; }
+.t2-ai-execution-intro { position: sticky; top: 160px; }
+.t2-ai-execution-intro p { margin-top: 26px; }
+.t2-ai-examples { display: flex; flex-direction: column; gap: 150px; min-width: 0; }
+.t2-ai-media { overflow: hidden; }
+.t2-ai-media img { width: 100%; height: auto; }
+.t2-ai-example figcaption { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 22px; max-width: 400px; margin: 34px 0 0 auto; }
+.t2-example-index { padding-top: 10px; font-size: 11px; color: #777; letter-spacing: 1px; }
+.t2-ai-example h3 { font-size: 28px; line-height: 1.2; }
+.t2-ai-example p { max-width: 291px; margin-top: 18px; }
+@media (max-width: 1100px) {
+  .t2-experience-intro { grid-template-columns: 240px 1fr 1fr; gap: 30px; }
+  .t2-homepage { gap: 70px; }
+  .t2-markups, .t2-ai-execution { grid-template-columns: 260px minmax(0, 1fr); gap: 60px; }
+  .t2-ai-principle-grid { gap: 40px; }
+  .t2-markup-phone { margin-right: 0; width: min(280px, 100%); }
+}
+@media (max-width: 767px) {
+  .t2-experience { padding: 100px 0; }
+  .t2-experience-intro { grid-template-columns: 1fr; gap: 26px; }
+  .t2-experience-intro h2 { max-width: 291px; margin-bottom: 8px; }
+  .t2-experience-intro p { max-width: 100%; }
+  .t2-homepage { grid-template-columns: 1fr; gap: 52px; margin-top: 65px; }
+  .t2-homepage-device { position: static; }
+  .t2-home-panel img { width: min(280px, 100%); }
+  .t2-home-tabs { gap: 24px; margin-bottom: 28px; }
+  .t2-home-tabs button { font-size: 12px; }
+  .t2-home-notes { gap: 38px; margin: 0; padding-bottom: 0; }
+  .t2-home-notes li { grid-template-columns: 24px 1fr; gap: 14px; }
+  .t2-home-notes h3 { font-size: 26px; }
+  .t2-home-notes p { max-width: 100%; margin-top: 14px; }
+  .t2-markups { grid-template-columns: 1fr; gap: 60px; padding: 100px 0; }
+  .t2-markups-copy, .t2-ai-execution-intro { position: static; }
+  .t2-markups-copy > p { max-width: 100%; }
+  .t2-markup-details { margin-top: 34px; }
+  .t2-markup-devices { gap: 48px; align-items: center; }
+  .t2-markup-phone { width: min(240px, 85%); }
+  .t2-markup-devices figcaption { font-size: 11px; }
+  .t2-ai-principles { padding: 100px 0; }
+  .t2-ai-heading { font-size: 40px; line-height: 1.05; margin-bottom: 65px; }
+  .t2-ai-principle-grid { grid-template-columns: 1fr; gap: 56px; }
+  .t2-ai-principle-grid article { max-width: 340px; }
+  .t2-ai-principle-grid h3 { font-size: 28.9px; }
+  .t2-ai-principle-grid p { margin-top: 20px; }
+  .t2-ai-step { margin-bottom: 20px; }
+  .t2-ai-execution { grid-template-columns: 1fr; gap: 60px; padding: 100px 0; }
+  .t2-ai-execution-intro { max-width: 340px; }
+  .t2-ai-examples { gap: 80px; }
+  .t2-ai-example figcaption { gap: 14px; grid-template-columns: 24px 1fr; margin-top: 26px; }
+  .t2-ai-example h3 { font-size: 26px; }
+  .t2-ai-example p { max-width: 100%; }
+}
