@@ -117,3 +117,7 @@ Reviewed the video-to-copy transition, desktop annotated panel, and mobile produ
 ## Unified light containers — 2026-11-17
 
 Verified all eleven light-section media panels compute to rgb(245,245,247), with dark text and the #f8f8f8 canvas preserved. Reviewed the Markups panel and checked mobile overflow. Production build and diff checks passed. Browser validation used a temporary isolated context that was closed afterward to avoid leaving viewport overrides in the user-facing browser.
+
+## Scroll-driven principle fades — 2026-11-17
+
+Replaced the three principle items’ timed stagger entrance with paused opacity animations driven by their viewport position. Each icon/caption pair fades at the bottom and top edges, stays fully visible in the middle, and reverses with scroll direction. Existing parent parallax stays separate. Verified hidden, intermediate, fully visible, exiting, and reverse-scroll states at 1440px and 390px; reduced-motion changes restore opacity 1 immediately. Build, JavaScript syntax, and diff checks passed.

@@ -46,17 +46,25 @@ document.querySelectorAll('[data-scroll-reveal]').forEach((scene) => {
 // while the right phone drifts in the opposite direction. Scroll reverses the motion.
 document.querySelectorAll('[data-phone-parallax]').forEach((scene) => {
   let animations = [];
+  let fades = [];
   let frame = 0;
   const update = () => {
     frame = 0;
     const bounds = scene.getBoundingClientRect();
     const progress = Math.max(0, Math.min(1, (innerHeight - bounds.top) / (innerHeight + bounds.height)));
     animations.forEach((animation) => { animation.currentTime = progress * 1000; });
+    fades.forEach(({ element, animation }) => {
+      const item = element.getBoundingClientRect();
+      const visibility = Math.max(0, Math.min(1, (innerHeight - item.top - item.height / 2) / innerHeight));
+      animation.currentTime = visibility * 1000;
+    });
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
   const configure = () => {
     animations.forEach((animation) => animation.cancel());
+    fades.forEach(({ animation }) => animation.cancel());
     animations = [];
+    fades = [];
     if (reducedMotion.matches) return;
     const mobile = matchMedia('(max-width: 734px)').matches;
     const travel = mobile ? 48 : 300 * Math.min(1, scene.clientWidth / 965);
@@ -72,6 +80,17 @@ document.querySelectorAll('[data-phone-parallax]').forEach((scene) => {
       ], { duration: 1000, fill: 'both', easing: 'linear' });
       animation.pause();
       return animation;
+    });
+    // Each icon and caption fades together at the viewport edges, in either scroll direction.
+    fades = [...scene.querySelector('.principles').children].map((element) => {
+      const animation = element.animate([
+        { opacity: 0, offset: 0 },
+        { opacity: 1, offset: .2 },
+        { opacity: 1, offset: .8 },
+        { opacity: 0, offset: 1 },
+      ], { duration: 1000, fill: 'both', easing: 'ease-in-out' });
+      animation.pause();
+      return { element, animation };
     });
     update();
   };
