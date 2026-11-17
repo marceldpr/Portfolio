@@ -7,12 +7,12 @@ description: |
   A product-led construction case study. Large device demonstrations carry the story,
   while restrained dark surfaces, concise section headings, and blue results provide hierarchy.
 colors:
-  background: "#1C1C1C"
-  surface: "#2A2929"
-  control: "#3B3B3B"
+  background: "#000000"
+  surface: "#1D1D1F"
+  control: "#333336"
   text: "#F5F5F7"
   muted: "#86868B"
-  eyebrow: "#9E9B9B"
+  eyebrow: "#F5F5F7"
   accent: "#2997FF"
 typography:
   display:
@@ -213,3 +213,17 @@ Implementation now uses shared spacing variables rather than isolated overrides.
 Art-direction QA: spacious chapter introductions alternate with denser 24px supporting-card clusters; the results band still establishes a surface change; asymmetric phones remain asymmetric; no new typography weights, decorative gradients, or shadows were introduced. Pill controls keep their independent sticky behavior. This is a measured spacing adaptation, not a claim that the case’s different content and device compositions are identical to Apple’s page.
 
 Do: use the shared variables, align headings with gallery gutters, and count a same-surface section boundary once. Don’t: reinstate ad hoc 77px padding, shrink the AR stage to make a spacing change, or remove the deliberate compact gaps between related UI panels. Open question: long portfolio copy has no one-to-one Apple counterpart; its reading widths and section mapping remain an explicit adaptation.
+
+## PROLED XDR color scheme — 2026-11-17
+
+The user's color reference supersedes the original Figma palette: https://www.apple.com/macbook-pro/proled-xdr-display/ and `/v/macbook-pro/proled-xdr-display/b/built/styles/overview.built.css`. ✅ High confidence: sampled rendered sections plus authored `.theme-dark`, button, tab, and control variables.
+
+- Main canvas: #000000; charcoal cards: #1d1d1f; secondary dark surface: #161617.
+- Headings: #f5f5f7; secondary copy: #86868b; introductory copy: #6e6e73.
+- Accent text: #2997ff; filled actions: #0071e3 (hover #0076df), white labels.
+- Controls: #333336; selected pill: #f5f5f7 with black text; borders #424245.
+- The reference’s closing shopping/exploration area uses #f5f5f7 with #1d1d1f text. Applied to the next-case link/footer, replacing the green glow.
+
+Results now sit on the continuous black canvas with charcoal metric cards, matching the reference’s product storytelling treatment. Existing sizes, spacing, imagery, motion, and content are retained. The two looping navigation video panels deliberately retain #2a2a2a because that background is baked into the supplied MP4s; recoloring those assets is outside this CSS palette update.
+
+Art-direction QA: neutral dark surfaces establish depth; blue is reserved for actions/results/annotations; no new decorative color is introduced; light closing polarity follows the reference. Do use semantic color tokens and high-contrast selected tabs. Don’t change product screenshot colors or mismatch the supplied video backgrounds. Mapping Apple’s shopping footer to a portfolio next-case area is an adaptation (⚠️ medium confidence). Contrast measurements are in `design-a11y.md`; the source’s #6e6e73 on black measures 4.14:1, so an exact palette match is not a blanket AA-normal-text claim.

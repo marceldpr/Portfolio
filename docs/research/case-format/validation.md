@@ -101,3 +101,7 @@ Confirmed the user's clarification: Changing is the left looping MP4 and Add is 
 ## Apple spacing audit — 2026-11-17
 
 Compared reference source CSS and computed geometry, then applied common section, chapter, heading, intro, and gutter values. Checked 1728/1440/1069/1068/768/735/734/390/320px: no horizontal overflow or clipped homepage/Issue annotations. Computed story padding is 128/96/80px, header gap 48/40/32px, intro gap 64/56/40px, and eyebrow gap 20/18/10px. Reviewed desktop highlights, results, annotation panel, and mobile results/products screenshots. Matching BIM/Sheets annotations and Issue connectors remain present. Build and diff checks passed.
+
+## PROLED XDR palette
+
+Read Apple’s source CSS and computed dark/light section colors. Applied black canvas, #1d1d1f cards, #161617 secondary stages, #f5f5f7 headings, gray copy, #0071e3 filled actions, white selected tabs, and light closing area. Retained #2a2a2a for baked video backgrounds. Reviewed desktop hero/navigation/next-case screenshots and mobile navigation. Verified tab selection, black text on the light active pill, blue metrics on charcoal cards, no mobile horizontal overflow, build, and diff checks.
