@@ -235,3 +235,7 @@ The final-result carousel slides and Markups panel now use the supplied PROLED X
 ## Light narrative after AR — 2026-11-17
 
 The page switches immediately below the AR scroll scene to the requested #f8f8f8 canvas, continuing through the footer. Light scopes use iPhone Duo heading #1d1d1f and supporting text #6e6e73, white media cards, #e8e8ed tab controls, and blue focus indicators. Principle icons become dark. The existing outlined Markups showcase retains its black surface/light text, and looping video panels retain their baked #2a2a2a background. Earlier sections remain dark.
+
+## Unified light containers — 2026-11-17
+
+All eleven media containers in the light narrative now use #f5f5f7, including Markups and both video wrappers. Markups inherits dark text and light controls. The page canvas remains #f8f8f8. Backgrounds embedded inside the original image/video files are unchanged.

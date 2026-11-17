@@ -113,3 +113,7 @@ Matched the reference source outline (1px #424245, 28px radius) and screenshot b
 ## Light narrative after AR
 
 Reviewed the video-to-copy transition, desktop annotated panel, and mobile products section. Verified light canvas #f8f8f8, dark headings #1d1d1f, gray body #6e6e73, white cards, readable selected tabs, and preserved dark Markups text. Checked 320/390/768/1068/1440/1728px for horizontal overflow; none. Verified BIM tab selection, normal-motion scroll video seeking while paused, and product heading fade-in. Production build and diff checks passed.
+
+## Unified light containers — 2026-11-17
+
+Verified all eleven light-section media panels compute to rgb(245,245,247), with dark text and the #f8f8f8 canvas preserved. Reviewed the Markups panel and checked mobile overflow. Production build and diff checks passed. Browser validation used a temporary isolated context that was closed afterward to avoid leaving viewport overrides in the user-facing browser.
