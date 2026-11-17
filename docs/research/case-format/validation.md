@@ -97,3 +97,7 @@ Updated only “From navigation to prioritization” with all nine supplied asse
 Verified both tab images decode, all three card images decode, both videos play, manual/offscreen/reduced-motion pause, and 44px mobile controls without horizontal overflow. Reviewed desktop homepage and demo panels plus the mobile layout. Build, syntax, and whitespace checks passed.
 
 Confirmed the user's clarification: Changing is the left looping MP4 and Add is the right looping MP4; AVIFs are posters/fallbacks. Added explicit image fallbacks for failed video requests or unsupported MP4 playback. Tested both clips wrapping from their final frames back to the beginning while playing, then deliberately blocked both MP4 requests and verified each corresponding AVIF becomes visible.
+
+## Apple spacing audit — 2026-11-17
+
+Compared reference source CSS and computed geometry, then applied common section, chapter, heading, intro, and gutter values. Checked 1728/1440/1069/1068/768/735/734/390/320px: no horizontal overflow or clipped homepage/Issue annotations. Computed story padding is 128/96/80px, header gap 48/40/32px, intro gap 64/56/40px, and eyebrow gap 20/18/10px. Reviewed desktop highlights, results, annotation panel, and mobile results/products screenshots. Matching BIM/Sheets annotations and Issue connectors remain present. Build and diff checks passed.

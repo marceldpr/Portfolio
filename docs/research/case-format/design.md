@@ -2,7 +2,7 @@
 version: anydesign-1
 name: TruScope case format
 source: https://www.figma.com/design/4I7FD5Q1zXcuQseTmtKVqY/Untitled?node-id=49-15645
-captured_at: 2026-11-16
+captured_at: 2026-11-17
 description: |
   A product-led construction case study. Large device demonstrations carry the story,
   while restrained dark surfaces, concise section headings, and blue results provide hierarchy.
@@ -34,7 +34,7 @@ typography:
     fontWeight: 500
 spacing:
   base: 8px
-  scale: [8, 16, 24, 32, 48, 64, 77, 96]
+  scale: [8, 10, 16, 18, 20, 24, 26, 32, 40, 48, 56, 64, 80, 96, 112, 120, 128, 144]
 rounded:
   button: 8px
   stat: 32px
@@ -109,7 +109,7 @@ Metadata labels are kept at the portfolio's current 12px size. Their contrast is
 
 ### Desktop geometry
 
-At 1728px, body copy is approximately 1446px wide and media stages 1568px wide. Hero media is 721 × 607. Highlights are 1260 × 616, with 32px between cards. Results occupy a contrasting full-width band. Typical sections have 77px vertical padding; section titles sit 48px above media. The final device section becomes denser, with a full-width annotated phone, paired phone stages, and issue/RFI/inspection cards.
+The original Figma used 1446px text containers, 1568px stages, and 77px section padding. The November 17 spacing request supersedes those values: text and stages now share Apple’s 87.5% container capped at 1260px, with 128/96/80px story padding and 48/40/32px heading-to-media gaps. Highlights retain a visible next-card preview. Results occupy a contrasting full-width band. The final device section becomes denser, with a full-width annotated phone, paired phone stages, and issue/RFI/inspection cards.
 
 ### Apple reference observations
 
@@ -190,3 +190,26 @@ Applied the Performance treatment to the scroll-reveal problem section, includin
 A second comparison found that the initial Apple pass applied the 21px introductory style too broadly. Apple's iPhone Duo standard product-view copy is 17px/25px at weight 400; camera-stat captions are 14px at weight 400. Its 21px/29px introductory copy uses SF Pro Display, whereas our Inter rendering was visibly different.
 
 The test route now uses a native system-font stack for body and supporting text, with 17px/25px regular body, 19px/27px regular hero description, 14px/20px feature captions, and regular annotation/subtitle headings. Apple-style antialiasing is enabled. Display headings retain Inter. The 19px hero description is a deliberate adaptation requested for smaller supporting text, not an exact desktop reference size. Platform font rendering varies; we do not claim a pixel-identical SF Pro web-font match.
+
+## Apple spacing audit — 2026-11-17
+
+Source: https://www.apple.com/iphone-duo/ and `/v/iphone-duo/f/built/styles/overview.built.css`, retrieved November 17. Source rules and computed styles inspected at 1728, 1440, 1068, 734, and 390px. ✅ High confidence for the measurements below. ⚠️ Medium confidence for mapping product marketing sections to this longer portfolio narrative.
+
+| Role | Desktop >1068 | Tablet 735–1068 | Mobile ≤734 |
+| --- | --- | --- | --- |
+| Product-story section padding | 128px | 96px | 80px |
+| Chapter / highlights intro | 144px | 120px | 112px |
+| Section header → media | 48px | 40px | 32px |
+| Camera intro → composition, enhanced mode | 64px | 56px | 40px |
+| Eyebrow → headline | 20px | 18px | 10px |
+| Headline → supporting copy | 26px | 24px | 18px |
+| Content width | 87.5%, max 1260px | 87.5%, max 1260px | 87.5%, max 420px |
+| Highlights media → section end, including control area | 224px | 176px | 144px |
+
+Measured mismatch before correction: 48px highlights top padding, 72px results padding, 77px general sections, 32px products padding, zero navigation top padding, and alternating 1205/1307px text/media containers at 1440px. Tablet section headings retained the desktop 48px gap instead of 40px. Several neighboring sections added both bottom and top padding, while others used special zero-padding rules.
+
+Implementation now uses shared spacing variables rather than isolated overrides. Same-surface consecutive stories omit bottom padding, following Apple’s adjacent-section rule; the incoming section supplies the gap. The contrasting results band keeps padding on both sides. The case-scope chapter uses the 144/120/112px rhythm. Results cards use the section header’s margin instead of a second competing margin. Media and headings share gutters; narrative insets follow the reference’s one-column offset on desktop. Desktop annotated and markup panels use their existing compact layout to fit the 1260px content cap. Full-width AR media retains its native aspect ratio and scroll runway.
+
+Art-direction QA: spacious chapter introductions alternate with denser 24px supporting-card clusters; the results band still establishes a surface change; asymmetric phones remain asymmetric; no new typography weights, decorative gradients, or shadows were introduced. Pill controls keep their independent sticky behavior. This is a measured spacing adaptation, not a claim that the case’s different content and device compositions are identical to Apple’s page.
+
+Do: use the shared variables, align headings with gallery gutters, and count a same-surface section boundary once. Don’t: reinstate ad hoc 77px padding, shrink the AR stage to make a spacing change, or remove the deliberate compact gaps between related UI panels. Open question: long portfolio copy has no one-to-one Apple counterpart; its reading widths and section mapping remain an explicit adaptation.
