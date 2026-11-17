@@ -22,7 +22,7 @@
 .t2-prototype-column { display: flex; flex-direction: column; min-width: 0; animation: t2-prototype-rise 40s linear infinite; animation-play-state: paused; }
 .t2-prototype-column-b { animation-duration: 32s; }
 .t2-prototypes[data-ready='true'] .t2-prototype-column { animation-play-state: running; }
-.t2-prototypes[data-paused='true'] .t2-prototype-column, .t2-prototypes:focus-within .t2-prototype-column { animation-play-state: paused; }
+.t2-prototypes[data-paused='true'] .t2-prototype-column { animation-play-state: paused; }
 .t2-prototype-group { display: flex; flex-direction: column; align-items: center; gap: 48px; padding-bottom: 48px; }
 .t2-prototype-card { flex: none; width: 100%; overflow: hidden; border: .5px solid #dadada; background: #f2f2f2; }
 .t2-prototype-card img, .t2-prototype-card video { display: block; width: 100%; height: auto; }
@@ -85,4 +85,13 @@
   .t2-prototype-card-video { width: auto; height: 400px; aspect-ratio: 520 / 1080; }
   .t2-prototype-card-phone { width: auto; height: 400px; aspect-ratio: 900 / 1840; }
   .t2-prototype-card-phone img, .t2-prototype-card-video video { width: auto; height: 100%; }
+}
+
+/* Keep every example reachable when JavaScript is unavailable. */
+.t2-prototypes:not([data-ready]) { height: auto; }
+.t2-prototypes:not([data-ready]) .t2-prototypes-layout { align-items: start; }
+.t2-prototypes:not([data-ready]) .t2-prototype-track { mask-image: none; -webkit-mask-image: none; }
+.t2-prototype-track:focus-visible { outline: 2px solid #0066cc; outline-offset: 6px; }
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .t2-prototype-track { padding-inline: 24px; }
 }

@@ -27,6 +27,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         caseFormatTest: 'test/index.html',
+        caseEditorialTest: 'test-2/index.html',
         alana: 'work/alana-platform/index.html',
         copilot: 'work/copilot-agent-builder/index.html',
         alanaDS: 'work/alana-design-system/index.html',
