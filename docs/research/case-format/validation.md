@@ -105,3 +105,7 @@ Compared reference source CSS and computed geometry, then applied common section
 ## PROLED XDR palette
 
 Read Apple’s source CSS and computed dark/light section colors. Applied black canvas, #1d1d1f cards, #161617 secondary stages, #f5f5f7 headings, gray copy, #0071e3 filled actions, white selected tabs, and light closing area. Retained #2a2a2a for baked video backgrounds. Reviewed desktop hero/navigation/next-case screenshots and mobile navigation. Verified tab selection, black text on the light active pill, blue metrics on charcoal cards, no mobile horizontal overflow, build, and diff checks.
+
+## Outlined product containers
+
+Matched the reference source outline (1px #424245, 28px radius) and screenshot black fill on all three final-result slides and the Markups panel. Reviewed desktop carousel/Markups and mobile Markups screenshots. Verified computed fills, radii, outline colors, pointer-events:none, no mobile overflow, carousel selection, and accordion expansion. Production build and diff checks passed.

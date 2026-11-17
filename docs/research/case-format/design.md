@@ -227,3 +227,7 @@ The user's color reference supersedes the original Figma palette: https://www.ap
 Results now sit on the continuous black canvas with charcoal metric cards, matching the reference’s product storytelling treatment. Existing sizes, spacing, imagery, motion, and content are retained. The two looping navigation video panels deliberately retain #2a2a2a because that background is baked into the supplied MP4s; recoloring those assets is outside this CSS palette update.
 
 Art-direction QA: neutral dark surfaces establish depth; blue is reserved for actions/results/annotations; no new decorative color is introduced; light closing polarity follows the reference. Do use semantic color tokens and high-contrast selected tabs. Don’t change product screenshot colors or mismatch the supplied video backgrounds. Mapping Apple’s shopping footer to a portfolio next-case area is an adaptation (⚠️ medium confidence). Contrast measurements are in `design-a11y.md`; the source’s #6e6e73 on black measures 4.14:1, so an exact palette match is not a blanket AA-normal-text claim.
+
+## Outlined product containers — 2026-11-17
+
+The final-result carousel slides and Markups panel now use the supplied PROLED XDR viewer treatment: black fill, 28px corner radius, and a 1px #424245 outline. The outline is an absolute, non-interactive overlay so images cannot cover it and existing panel geometry stays intact. This scoped treatment applies at every breakpoint.

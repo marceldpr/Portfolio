@@ -35,6 +35,9 @@ h4 { font-size: 17px; line-height: 1.4706; font-weight: 400; }
 .inset-copy { margin-inline: 8.3333%; }
 .media-panel { background: var(--panel); border-radius: 48px; overflow: hidden; position: relative; }
 .dark-panel { background: var(--surface-secondary); }
+/* Match the outlined product viewer in the PROLED XDR reference. */
+.media-panel:is(.viewer-stage, .markups-panel) { background: var(--background); border-radius: 28px; }
+.media-panel:is(.viewer-stage, .markups-panel)::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--border); border-radius: inherit; pointer-events: none; z-index: 9; }
 .sr-only, .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .skip-link:focus { position: fixed; z-index: 10; top: 16px; left: 16px; background: #fff; color: #111; padding: 12px 20px; }
 .site-nav { position: absolute; inset: 24px 3.2% auto; display: flex; justify-content: space-between; font: 20px Montreal, Arial, sans-serif; }
