@@ -231,3 +231,7 @@ Art-direction QA: neutral dark surfaces establish depth; blue is reserved for ac
 ## Outlined product containers — 2026-11-17
 
 The final-result carousel slides and Markups panel now use the supplied PROLED XDR viewer treatment: black fill, 28px corner radius, and a 1px #424245 outline. The outline is an absolute, non-interactive overlay so images cannot cover it and existing panel geometry stays intact. This scoped treatment applies at every breakpoint.
+
+## Light narrative after AR — 2026-11-17
+
+The page switches immediately below the AR scroll scene to the requested #f8f8f8 canvas, continuing through the footer. Light scopes use iPhone Duo heading #1d1d1f and supporting text #6e6e73, white media cards, #e8e8ed tab controls, and blue focus indicators. Principle icons become dark. The existing outlined Markups showcase retains its black surface/light text, and looping video panels retain their baked #2a2a2a background. Earlier sections remain dark.

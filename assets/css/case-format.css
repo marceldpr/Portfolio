@@ -38,6 +38,14 @@ h4 { font-size: 17px; line-height: 1.4706; font-weight: 400; }
 /* Match the outlined product viewer in the PROLED XDR reference. */
 .media-panel:is(.viewer-stage, .markups-panel) { background: var(--background); border-radius: 28px; }
 .media-panel:is(.viewer-stage, .markups-panel)::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--border); border-radius: inherit; pointer-events: none; z-index: 9; }
+/* The narrative switches to a light surface immediately after the AR scene. */
+.case-light { color-scheme: light; --background: #f8f8f8; --light-background: #f8f8f8; --panel: #fff; --surface-secondary: #f5f5f7; --control: #e8e8ed; --border: #d2d2d7; --text: #1d1d1f; --muted: #6e6e73; --intro-text: #6e6e73; --accent: #0066cc; background: var(--background); color: var(--text); }
+.problem.section-space { padding-bottom: 0; }
+.problem-copy { padding-top: var(--heading-space); }
+.problem-copy .centered-copy { margin-top: 0; }
+.case-light .principles img { filter: brightness(0); opacity: .88; }
+.case-light .segmented-control :focus-visible { outline-color: var(--button); }
+.case-light .markups-panel { color-scheme: dark; --background: #000; --control: #333336; --border: #424245; --text: #f5f5f7; --muted: #86868b; color: var(--text); }
 .sr-only, .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .skip-link:focus { position: fixed; z-index: 10; top: 16px; left: 16px; background: #fff; color: #111; padding: 12px 20px; }
 .site-nav { position: absolute; inset: 24px 3.2% auto; display: flex; justify-content: space-between; font: 20px Montreal, Arial, sans-serif; }

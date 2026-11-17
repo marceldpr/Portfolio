@@ -109,3 +109,7 @@ Read Apple’s source CSS and computed dark/light section colors. Applied black 
 ## Outlined product containers
 
 Matched the reference source outline (1px #424245, 28px radius) and screenshot black fill on all three final-result slides and the Markups panel. Reviewed desktop carousel/Markups and mobile Markups screenshots. Verified computed fills, radii, outline colors, pointer-events:none, no mobile overflow, carousel selection, and accordion expansion. Production build and diff checks passed.
+
+## Light narrative after AR
+
+Reviewed the video-to-copy transition, desktop annotated panel, and mobile products section. Verified light canvas #f8f8f8, dark headings #1d1d1f, gray body #6e6e73, white cards, readable selected tabs, and preserved dark Markups text. Checked 320/390/768/1068/1440/1728px for horizontal overflow; none. Verified BIM tab selection, normal-motion scroll video seeking while paused, and product heading fade-in. Production build and diff checks passed.
