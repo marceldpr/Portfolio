@@ -116,6 +116,7 @@ h4 { font-size: 17px; line-height: 1.4706; font-weight: 400; }
 .problem .centered-copy p { color: inherit; }
 .ar-scroll-scene { --ar-stage-height: calc(100vw * 750 / 1424); --ar-stage-top: max(0px, calc((100svh - var(--ar-stage-height)) / 2)); }
 .ar-scroll-stage { height: var(--ar-stage-height); position: relative; }
+.ar-scroll-stage::after { content: ''; position: absolute; inset: 0 0 auto; height: clamp(80px, 8vw, 160px); background: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.8) 25%, rgba(0,0,0,.3) 65%, transparent 100%); pointer-events: none; }
 .ar-scroll-video, .ar-scroll-poster { width: 100%; height: 100%; object-fit: contain; }
 .ar-scroll-video { display: none; }
 .ar-scroll-scene[data-enabled='true'] { height: calc(var(--ar-stage-height) + 180svh); }
