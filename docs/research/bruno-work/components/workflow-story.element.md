@@ -40,10 +40,10 @@ The reference uses open space and plain text rather than enclosing each story in
 ## Specification
 
 - Two rows within the existing 1147px maximum width, with 38px desktop gutters.
-- Desktop columns: illustration up to 650px and copy up to 291px, reversed for row two. Vertically centered; 200px between rows.
+- Desktop columns: flexible illustration (779px at the full container width) and 320px copy, separated by 48px and reversed for row two. Vertically centered; 200px between rows.
 - Paragraphs use the existing 14px body style, 1.52 line-height, .14px tracking, and 20px paragraph separation. User wording is preserved exactly.
 - Tags: 10px uppercase, 1px tracking, 400 weight, #e9e9e9 surface, 6px vertical and 10px horizontal padding, 2px corners. These are descriptive labels, not buttons.
-- Illustrations retain their intrinsic aspect ratios and all content. Multiply blending integrates the light image backgrounds with the page; no raster edits or generation.
+- Illustrations retain their intrinsic aspect ratios and all artwork. CSS clips only the empty side margins (11% per side for the first asset, 7% for the second), enlarging the visible diagrams and aligning their edges with the tags. Multiply blending integrates the light image backgrounds with the page; original raster files remain unchanged.
 - At 900px and below, each row stacks copy first, then illustration and tags. Mobile uses the existing 24px gutters, 100px between stories, and wrapping tags. This is an implementation adaptation, not a mobile reference measurement.
 - Images open at their original resolution in a new tab, with descriptive accessible link labels, for reading small annotations. Existing focus styles apply.
 - Existing scroll reveal and paragraph shimmer apply to the new content. Reduced motion displays the final visible state.
