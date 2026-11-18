@@ -68,6 +68,7 @@ function prepareLetterHeading(heading) {
       const glyph = document.createElement('span');
       glyph.className = 't2-letter-glyph';
       const original = document.createElement('span');
+      original.className = 't2-letter-original';
       original.textContent = character;
       const copy = document.createElement('span');
       copy.className = 't2-letter-copy';

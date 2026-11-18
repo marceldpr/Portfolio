@@ -1,3 +1,11 @@
+import { initTextMotion } from './test-2-text-motion.js';
+import { initDecorativeMotion } from './test-2-decorative-motion.js';
+import { initAmbientMotion } from './test-2-ambient-motion.js';
+
+initTextMotion();
+initDecorativeMotion();
+initAmbientMotion();
+
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const desktopMotion = matchMedia('(min-width: 1024px) and (min-height: 720px)');
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
@@ -17,43 +25,6 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '0px 0px -5% 0px', threshold: 0 });
 document.querySelectorAll('.t2-reveal').forEach((element) => revealObserver.observe(element));
-
-const wordAnimations = [];
-const wordObserver = new IntersectionObserver((entries) => {
-  entries.forEach(({ target, isIntersecting }) => {
-    if (!isIntersecting) return;
-    if (!reducedMotion.matches) {
-      target.querySelectorAll('.t2-word > span').forEach((word, index) => {
-        wordAnimations.push(word.animate([
-          { transform: 'translateY(110%)', opacity: 0 },
-          { transform: 'translateY(0)', opacity: 1 },
-        ], { duration: 850, delay: Math.min(index * 55, 550), easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' }));
-      });
-    }
-    wordObserver.unobserve(target);
-  });
-}, { threshold: .2 });
-document.querySelectorAll('[data-t2-words]').forEach((heading) => {
-  heading.setAttribute('aria-label', heading.innerText.replace(/\s+/g, ' ').trim());
-  [...heading.childNodes].forEach((node) => {
-    if (node.nodeType !== Node.TEXT_NODE) return;
-    const fragment = document.createDocumentFragment();
-    node.textContent.split(/(\s+)/).forEach((part) => {
-      if (/^\s*$/.test(part)) fragment.append(document.createTextNode(part));
-      else {
-        const outer = document.createElement('span');
-        outer.className = 't2-word';
-        outer.setAttribute('aria-hidden', 'true');
-        const inner = document.createElement('span');
-        inner.textContent = part;
-        outer.append(inner);
-        fragment.append(outer);
-      }
-    });
-    node.replaceWith(fragment);
-  });
-  wordObserver.observe(heading);
-});
 
 const foundation = document.querySelector('.t2-foundations');
 const foundationCards = [...document.querySelectorAll('.t2-foundation-card')];
@@ -78,6 +49,7 @@ function configureCards() {
 }
 
 const homeTabs = [...document.querySelectorAll('[data-t2-home]')];
+let homeTransition;
 function selectHome(tab) {
   homeTabs.forEach((item) => {
     const selected = item === tab;
@@ -89,6 +61,11 @@ function selectHome(tab) {
   image.src = `/assets/img/case-format/navigation-${bim ? 'bim' : 'sheets'}.avif`;
   image.alt = `${bim ? '3D BIM' : 'Sheet management'} For You homepage with deadlines, assigned work, and project navigation`;
   document.getElementById('t2-home-panel').setAttribute('aria-labelledby', tab.id);
+  homeTransition?.cancel();
+  if (!reducedMotion.matches) homeTransition = image.animate([
+    { opacity: .25, transform: 'translateY(8px)' },
+    { opacity: 1, transform: 'translateY(0)' },
+  ], { duration: 450, easing: 'cubic-bezier(.215,.61,.355,1)' });
 }
 homeTabs.forEach((tab, index) => {
   tab.addEventListener('click', () => selectHome(tab));
@@ -205,40 +182,6 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: .6 });
 document.querySelectorAll('[data-t2-count]').forEach((element) => countObserver.observe(element));
 
-// A lightweight dotted helix echoes the reference's quiet background texture.
-const canvas = document.querySelector('.t2-helix');
-const context = canvas?.getContext('2d');
-function drawHelix(phase = 0) {
-  if (!context) return;
-  const width = 900, height = 1100;
-  const ratio = Math.min(devicePixelRatio, 2);
-  if (canvas.width !== width * ratio) {
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
-  }
-  context.setTransform(ratio, 0, 0, ratio, 0, 0);
-  context.clearRect(0, 0, width, height);
-  for (let row = -10; row < 115; row++) {
-    const turn = row * .035 + phase;
-    for (let col = 0; col < 66; col++) {
-      const angle = col / 66 * Math.PI * 2;
-      const radius = 210 + 42 * Math.cos(turn * 2);
-      const x = 430 + Math.sin(turn) * 190 + Math.cos(angle) * radius;
-      const y = 80 + row * 10 + Math.sin(angle) * 45;
-      const depth = (Math.sin(angle) + 1) / 2;
-      const size = 1 + depth * 2.2;
-      context.fillStyle = `rgba(120,120,120,${.15 + depth * .45})`;
-      context.beginPath();
-      context.moveTo(x, y - size);
-      context.lineTo(x + size, y);
-      context.lineTo(x, y + size);
-      context.lineTo(x - size, y);
-      context.closePath();
-      context.fill();
-    }
-  }
-}
-
 const darkBands = [...document.querySelectorAll('[data-t2-theme="dark"]')];
 let scheduled = false;
 function updateScroll() {
@@ -264,14 +207,13 @@ function updateScroll() {
     cardAnimations.forEach((animation) => { animation.currentTime = progress * 1000; });
     document.querySelector('.t2-foundation-step').textContent = `0${Math.min(3, Math.floor(progress * 2.9) + 1)} — 03`;
   }
-  if (scrollY < 1300) drawHelix(reducedMotion.matches ? 0 : scrollY * .00025);
 }
 function scheduleScroll() {
   if (!scheduled) { scheduled = true; requestAnimationFrame(updateScroll); }
 }
 function configureMotion() {
   document.documentElement.classList.toggle('t2-motion', !reducedMotion.matches);
-  if (reducedMotion.matches) wordAnimations.forEach((animation) => animation.finish());
+  if (reducedMotion.matches) homeTransition?.cancel();
   galleryPaused = reducedMotion.matches;
   configureCards();
   syncGallery();
@@ -283,4 +225,3 @@ window.addEventListener('resize', scheduleScroll, { passive: true });
 reducedMotion.addEventListener('change', configureMotion);
 desktopMotion.addEventListener('change', () => { configureCards(); scheduleScroll(); });
 configureMotion();
-drawHelix();

@@ -10,8 +10,10 @@
 .t2-letter-slot { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
 .t2-letter-glyph { display: inline-block; position: relative; }
 .t2-letter-copy { position: absolute; inset: auto auto 100% 0; }
+.t2-letter-original { visibility: hidden; }
 @media (max-width: 767px), (prefers-reduced-motion: reduce) {
   .t2-letter-copy { display: none; }
+  .t2-letter-original { visibility: visible; }
 }
 @media (prefers-reduced-motion: reduce) {
   .t2-shimmer-copy { background: none !important; -webkit-text-fill-color: inherit; }

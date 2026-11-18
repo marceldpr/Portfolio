@@ -1,0 +1,26 @@
+html.lenis { scroll-behavior: auto; }
+.t2-scribble { position: relative; }
+.t2-scribble-animation, .t2-scribble-fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
+.t2-scribble-animation { visibility: hidden; }
+.t2-scribble[data-ready='true']:not([data-static='true']) .t2-scribble-animation { visibility: visible; }
+.t2-scribble[data-ready='true']:not([data-static='true']) .t2-scribble-fallback { visibility: hidden; }
+.t2-markup-details details { overflow: hidden; }
+.t2-foundation-art { position: relative; overflow: hidden; }
+.t2-foundation-art::after { content: ''; position: absolute; width: 100px; height: 200%; top: -50%; left: -120px; background: linear-gradient(90deg, transparent, #ffffff85, transparent); transform: rotate(25deg); pointer-events: none; }
+.t2-foundation-art[data-visible='true'][data-paused='false']::after { animation: t2-art-sweep 4.5s ease-in-out infinite; }
+.t2-foundation-art[data-visible='true'][data-paused='false'] img { animation: t2-art-float 4.5s ease-in-out infinite; }
+.t2-foundation-card:nth-child(2) .t2-foundation-art img { animation-delay: -.8s; }
+.t2-foundation-card:nth-child(3) .t2-foundation-art img { animation-delay: -1.6s; }
+.t2-ai-principle-grid > article:nth-child(2) { transition-delay: .18s; }
+.t2-ai-principle-grid > article:nth-child(3) { transition-delay: .36s; }
+.t2-text-link { transition: color .2s ease; }
+.t2-text-link > span[aria-hidden] { transition: transform .25s ease; }
+.t2-text-link:hover > span[aria-hidden] { transform: translate(3px, -3px); }
+@keyframes t2-art-float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(3deg); } }
+@keyframes t2-art-sweep { 0%, 20% { left: -120px; } 80%, 100% { left: calc(100% + 20px); } }
+@media (prefers-reduced-motion: reduce) {
+  .t2-foundation-art::after { display: none; }
+  .t2-foundation-art img { animation: none !important; }
+  .t2-ai-principle-grid > article { transition-delay: 0s; }
+  .t2-text-link, .t2-text-link > span[aria-hidden] { transition: none; }
+}
