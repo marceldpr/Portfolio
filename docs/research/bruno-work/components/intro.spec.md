@@ -10,6 +10,6 @@ Context: three258px columns inside988px, gap24px between each icon/heading/body,
 
 Workflow: left300px heading/copy,rightvideo1424:750, verticalpadding210px. Source realTruScopeARvideo withposter/manualcontrols. Two notescolumnsbelow.
 
-Foundations: serif104px/.99 title, own3designprinciples in586pxwide thinbordercards. Scroll-driven sticky viewport260svh atdesktopwidth>=1024,height>=720. Firstcardstable0–20%, second40–60%,third80–100%; transitionstranslate/rotate/fade. Mobile horizontal snaprail, reducedmotionstaticstack. Sharednavigation,consistentstructure,familiarinteractions cards preserveactualTruScopestory.
+Foundations: serif104px/.99 title, own3designprinciples in586pxwide thinbordercards. Scroll-driven sticky viewport260svh atdesktopwidth>=1024,height>=720. Retained upright stack: first card stays visible; second slides upward during20–45%, third during55–80%. Completed cards hold full opacity and position, with15% horizontal offsets; scrolling backward reverses entry. Equal-height grid cards and compact spacing on720–850px tall viewports keep content readable. Mobile horizontal snaprail, reducedmotionstaticstack. Sharednavigation,consistentstructure,familiarinteractions cards preserveactualTruScopestory.
 
 Textreveals: intersectiontriggered opacity/translate, wordsstagger55ms,duration850ms. No animations with reducedmotion. Videosplayonlywhilevisible, pauseoffscreen/hidden, respectexplicitmanualpause. ContentremainsvisiblewithoutJS.

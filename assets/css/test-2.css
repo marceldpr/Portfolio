@@ -85,10 +85,19 @@ p + p { margin-top: 20px; }
 @media (min-width: 1024px) and (min-height: 720px) and (prefers-reduced-motion: no-preference) {
   .t2-motion .t2-foundations { height: 260svh; min-height: 1900px; padding-bottom: 0; }
   .t2-motion .t2-foundations-stage { position: sticky; top: 0; height: 100svh; min-height: 700px; overflow: hidden; padding-top: 120px; }
-  .t2-motion .t2-foundations-intro { margin: 28px 0 0 max(calc((100vw - 1147px)/2),38px); }
-  .t2-motion .t2-foundation-cards { position: absolute; width: 586px; right: max(calc((100vw - 1147px)/2),38px); top: 42%; display: block; }
-  .t2-motion .t2-foundation-card { position: absolute; top: 0; width: 100%; min-height: 430px; transform-origin: 50% 180%; }
+  .t2-motion .t2-foundations-intro { margin: 28px 0 0; }
+  .t2-motion .t2-foundation-cards { position: absolute; width: min(877px, calc(100% - 346px)); max-width: none; right: max(calc((100vw - 1147px)/2),38px); top: max(360px, 42%); display: grid; }
+  .t2-motion .t2-foundation-card { position: relative; grid-area: 1 / 1; top: 0; left: 0; width: 67%; min-height: 430px; }
+  .t2-motion .t2-foundation-card:nth-child(2) { left: 15%; }
+  .t2-motion .t2-foundation-card:nth-child(3) { left: 30%; }
   .t2-motion .t2-foundation-step { display: block; position: absolute; bottom: 38px; left: max(calc((100vw - 1147px)/2),38px); color: #777; font-size: 12px; letter-spacing: 2px; }
+}
+@media (min-width: 1024px) and (min-height: 720px) and (max-height: 850px) and (prefers-reduced-motion: no-preference) {
+  .t2-motion .t2-foundations-stage { padding-top: 108px; }
+  .t2-motion .t2-foundations .t2-large-title { font-size: 88px; }
+  .t2-motion .t2-foundation-cards { top: 310px; }
+  .t2-motion .t2-foundation-card { min-height: 0; padding: 24px; }
+  .t2-motion .t2-foundation-art { height: 80px; margin-bottom: 24px; }
 }
 @media (max-width: 1100px) { .t2-identity-detail { display: none; } .t2-context { grid-template-columns: repeat(3,1fr); } .t2-before { gap: 40px; grid-template-columns: 250px 1fr; } .t2-before-notes { gap: 28px; } }
 @media (max-width: 767px) {

@@ -10,7 +10,7 @@ Scope: the first case from the centered AI-agent introduction through the protot
 | Paragraph shimmer | 450ms delay, approximately 23 characters/second, purple/gray/white sweep into final ink | Responsive horizontal text sweep, preserving inline emphasis and final text metrics |
 | Insight sketches | Three looping Lottie JSONs, speed .6, 200 frames at 100fps | Original decorative sketch animations served locally; static SVG fallback for reduced motion |
 | Process title | Scrubbed four-letter chunks settle as section top moves from viewport bottom to top | Foundation title spacing settles on scroll |
-| Process cards | Pinned sequential cards with rotation/translation; mobile cycles every 3500ms | Existing desktop card timeline retained; added mobile cycling with a pause after touch, wheel, keyboard, or pointer interaction |
+| Process cards | Pinned cards settle into an upright, horizontally offset stack; previous cards remain visible. Mobile cycles every 3500ms | Desktop cards slide up sequentially and hold their positions at full opacity; forward/backward scrolling builds/unbuilds the stack. Mobile cycling pauses after touch, wheel, keyboard, or pointer interaction |
 | Card artwork | Looping media in the reference's card headers | TruScope icon artwork has subtle looping motion and a passing highlight |
 | Black pixel reveal | 60×20 cells desktop, 20 columns mobile, randomized top-down order; section top at center+270px through top | Canvas overlay over the AI band, reversible on scroll |
 | Principle cards | 700ms fade/28px rise, 0/180/360ms stagger; outlined pixel reveal and .05-opacity pulse | Staggered existing cards plus subtle outline/pulse canvas regions |
@@ -38,3 +38,11 @@ Case-specific Bruno product videos and avatars remain replaced with existing Tru
 - No horizontal page overflow or clipped headings at 320, 390, 768, 1024, 1440, and 1728px.
 - Live reduced-motion change removed Lenis, hid pixel overlays, removed paragraph shimmer, and left zero running infinite CSS/WAAPI animations.
 - Reviewed desktop intro, partially revealed AI band, finished results, mobile intro, and mobile AI screenshots. Corrected duplicate-letter ink leaking outside the results mask.
+
+## Retained process-card stack correction
+
+- Removed the desktop exit rotation and fade. Card 1 remains in place; cards 2 and 3 arrive over scroll ranges 20–45% and 55–80%, then stay stacked.
+- Cards share a grid cell for equal heights, with 15% horizontal offsets. The description aligns to the left content edge, beside the stack.
+- Compact spacing below 851px viewport height keeps the complete active card visible. Mobile rail and reduced-motion static layout remain intact.
+- Verified forward and reverse scroll states at 0, 20, 45, 55, 80, and 100%; completed cards retained opacity 1 and zero translation.
+- Browser checks passed at 1728×900, 1440×1000, 1024×768, and 1440×720, plus 390px mobile and desktop reduced motion. No page errors or horizontal overflow.

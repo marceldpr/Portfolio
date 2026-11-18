@@ -33,16 +33,19 @@ function configureCards() {
   cardAnimations.forEach((animation) => animation.cancel());
   cardAnimations = [];
   if (reducedMotion.matches || !desktopMotion.matches) return;
-  const resting = { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 };
-  const waiting = { transform: 'translate(240px, 650px) rotate(18deg)', opacity: 0 };
-  const exited = { transform: 'translate(-420px, -180px) rotate(-18deg)', opacity: 0 };
-  const timelines = [
-    [{ ...resting, offset: 0 }, { ...resting, offset: .2 }, { ...exited, offset: .4 }, { ...exited, offset: 1 }],
-    [{ ...waiting, offset: 0 }, { ...waiting, offset: .2 }, { ...resting, offset: .4 }, { ...resting, offset: .6 }, { ...exited, offset: .8 }, { ...exited, offset: 1 }],
-    [{ ...waiting, offset: 0 }, { ...waiting, offset: .6 }, { ...resting, offset: .8 }, { ...resting, offset: 1 }],
-  ];
+  // Completed cards hold their position while the next card joins the stack.
+  const resting = { transform: 'translateY(0)' };
+  const waiting = { transform: 'translateY(100vh)' };
   cardAnimations = foundationCards.map((card, index) => {
-    const animation = card.animate(timelines[index], { duration: 1000, fill: 'both', easing: 'linear' });
+    const start = index === 0 ? 0 : index === 1 ? .2 : .55;
+    const end = index === 0 ? 0 : index === 1 ? .45 : .8;
+    const frames = index === 0 ? [resting, resting] : [
+      { ...waiting, offset: 0 },
+      { ...waiting, offset: start, easing: 'cubic-bezier(.25,.46,.45,.94)' },
+      { ...resting, offset: end },
+      { ...resting, offset: 1 },
+    ];
+    const animation = card.animate(frames, { duration: 1000, fill: 'both' });
     animation.pause();
     return animation;
   });
@@ -205,7 +208,7 @@ function updateScroll() {
     const rect = foundation.getBoundingClientRect();
     const progress = clamp(-rect.top / (foundation.offsetHeight - innerHeight));
     cardAnimations.forEach((animation) => { animation.currentTime = progress * 1000; });
-    document.querySelector('.t2-foundation-step').textContent = `0${Math.min(3, Math.floor(progress * 2.9) + 1)} — 03`;
+    document.querySelector('.t2-foundation-step').textContent = `0${progress < .2 ? 1 : progress < .55 ? 2 : 3} — 03`;
   }
 }
 function scheduleScroll() {
