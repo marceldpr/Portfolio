@@ -1,0 +1,19 @@
+/* Word masks retain the existing text metrics and responsive line breaks. */
+.t2-roll-word, .t2-shift-word, .t2-letter-word { display: inline-block; }
+.t2-roll-word { overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+.t2-roll-word > span { display: inline-block; }
+.t2-shift-heading { overflow: clip; overflow-clip-margin: .15em; }
+.t2-shift-chunk { display: inline-block; }
+.t2-shimmer-copy { background-size: 300% 100%; background-repeat: no-repeat; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.t2-shimmer-copy strong, .t2-shimmer-copy em { -webkit-text-fill-color: transparent; }
+.t2-letter-word { white-space: nowrap; }
+.t2-letter-slot { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+.t2-letter-glyph { display: inline-block; position: relative; }
+.t2-letter-copy { position: absolute; inset: auto auto 100% 0; }
+@media (max-width: 767px), (prefers-reduced-motion: reduce) {
+  .t2-letter-copy { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .t2-shimmer-copy { background: none !important; -webkit-text-fill-color: inherit; }
+  .t2-shimmer-copy strong, .t2-shimmer-copy em { -webkit-text-fill-color: inherit; }
+}
