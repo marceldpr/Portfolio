@@ -66,6 +66,7 @@ p + p { margin-top: 20px; }
 .t2-before-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,320px); align-items: center; gap: 48px; }
 .t2-before-row-reverse { grid-template-columns: minmax(0,320px) minmax(0,1fr); }
 .t2-before-copy { max-width: 320px; }
+.t2-before-copy h2 { margin-bottom: 24px; }
 .t2-before-media { min-width: 0; }
 .t2-before-media a { display: block; overflow: hidden; cursor: zoom-in; }
 /* Remove only the artwork’s empty side margins from its displayed frame. */
