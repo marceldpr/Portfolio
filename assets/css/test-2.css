@@ -62,13 +62,22 @@ p + p { margin-top: 20px; }
 .t2-context article { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
 .t2-context article p { max-width: 217px; }
 .t2-scribble { width: 100px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
-.t2-before { padding-block: 210px; display: grid; grid-template-columns: 300px 1fr; gap: 70px; align-items: start; }
-.t2-before-heading p { margin-top: 24px; max-width: 275px; }
-.t2-before-media { align-self: center; }
-.t2-before-media video { width: 100%; background: #e5e5e5; aspect-ratio: 1424/750; }
-.t2-before-media figcaption { margin-top: 16px; font-size: 12px; color: #666; }
-.t2-before-notes { grid-column: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
-.t2-before-notes p { margin-top: 24px; }
+.t2-before { padding-block: 180px 210px; display: grid; gap: 200px; }
+.t2-before-row { display: grid; grid-template-columns: minmax(0,650px) minmax(0,291px); justify-content: space-between; align-items: center; gap: clamp(48px,7vw,120px); }
+.t2-before-row-reverse { grid-template-columns: minmax(0,291px) minmax(0,650px); }
+.t2-before-copy { max-width: 291px; }
+.t2-before-media { min-width: 0; }
+.t2-before-media a { display: block; cursor: zoom-in; }
+.t2-before-media img { width: 100%; height: auto; mix-blend-mode: multiply; }
+.t2-before-media figcaption { margin-top: 32px; }
+.t2-before-tags { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; list-style: none; }
+.t2-before-tags li { background: #e9e9e9; padding: 6px 10px; border-radius: 2px; font-size: 10px; font-weight: 400; line-height: 1.5; letter-spacing: 1px; }
+@media (max-width: 900px) {
+  .t2-before { padding-block: 120px; gap: 120px; }
+  .t2-before-row, .t2-before-row-reverse { grid-template-columns: minmax(0,1fr); gap: 32px; }
+  .t2-before-copy { order: 0; max-width: 480px; }
+  .t2-before-media { order: 1; }
+}
 .t2-foundations { position: relative; padding-bottom: 150px; }
 .t2-foundations-stage { position: relative; padding-top: 64px; }
 .t2-foundations-intro { width: 241px; margin: 24px auto 64px; }
@@ -99,7 +108,7 @@ p + p { margin-top: 20px; }
   .t2-motion .t2-foundation-card { min-height: 0; padding: 24px; }
   .t2-motion .t2-foundation-art { height: 80px; margin-bottom: 24px; }
 }
-@media (max-width: 1100px) { .t2-identity-detail { display: none; } .t2-context { grid-template-columns: repeat(3,1fr); } .t2-before { gap: 40px; grid-template-columns: 250px 1fr; } .t2-before-notes { gap: 28px; } }
+@media (max-width: 1100px) { .t2-identity-detail { display: none; } .t2-context { grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 767px) {
   html { scroll-padding-top: 100px; }
   .t2-header { height: 104px; padding: 12px 24px 48px; }
@@ -118,9 +127,9 @@ p + p { margin-top: 20px; }
   .t2-context { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 80px; padding-block: 110px; }
   .t2-context article { align-items: center; max-width: 238px; }
   .t2-context article p { max-width: none; }
-  .t2-before { padding-block: 100px; grid-template-columns: 1fr; gap: 40px; }
-  .t2-before-heading p { max-width: 340px; }
-  .t2-before-notes { grid-column: auto; gap: 36px; grid-template-columns: 1fr; max-width: 340px; }
+  .t2-before { padding-block: 100px; gap: 100px; }
+  .t2-before-copy { max-width: 340px; }
+  .t2-before-media figcaption { margin-top: 24px; }
   .t2-foundations { padding-bottom: 100px; }
   .t2-foundations-stage { padding-top: 0; }
   .t2-foundations-intro { width: auto; max-width: 340px; margin: 24px 0 40px; }

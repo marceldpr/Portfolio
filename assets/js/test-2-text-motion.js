@@ -98,7 +98,7 @@ export function initTextMotion() {
       && !['t2-foundations-title', 't2-impact-title'].includes(heading.id))
     .map((heading) => ({ element: heading, words: prepareRollingHeading(heading), animations: [], revealed: false }));
   const paragraphSelector = [
-    '.t2-intro-copy p', '.t2-context p', '.t2-before-heading p', '.t2-before-notes p',
+    '.t2-intro-copy p', '.t2-context p', '.t2-before-copy p',
     '.t2-foundations-intro', '.t2-experience-intro p', '.t2-markups-copy > p',
     '.t2-ai-execution-intro p', '.t2-impact-summary p', '.t2-prototypes-copy > p',
   ].join(',');
