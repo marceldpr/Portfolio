@@ -26,6 +26,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
+        testHome: 'test-home/index.html',
         caseFormatTest: 'test/index.html',
         caseEditorialTest: 'test-2/index.html',
         alana: 'work/alana-platform/index.html',

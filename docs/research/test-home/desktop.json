@@ -1,0 +1,503 @@
+{
+  "width": 1440,
+  "font": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+  "geist": "\"Geist\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+  "items": [
+    {
+      "s": ".hero-section",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 813,
+        "top": 0,
+        "right": 1440,
+        "bottom": 813,
+        "left": 0
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1440px",
+        "height": "813px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "normal",
+        "flexDirection": "column",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-header",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 160,
+        "top": 0,
+        "right": 1440,
+        "bottom": 160,
+        "left": 0
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1440px",
+        "height": "160px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexDirection": "row",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-header__inner",
+      "rect": {
+        "x": 17.5,
+        "y": 0,
+        "width": 1405,
+        "height": 160,
+        "top": 0,
+        "right": 1422.5,
+        "bottom": 160,
+        "left": 17.5
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1405px",
+        "height": "160px",
+        "padding": "0px 38px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexDirection": "row",
+        "border": "",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-header__row",
+      "rect": {
+        "x": 56,
+        "y": 53,
+        "width": 1328.5,
+        "height": 54,
+        "top": 53,
+        "right": 1384.5,
+        "bottom": 107,
+        "left": 56
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1328.5px",
+        "height": "54px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "grid",
+        "alignItems": "center",
+        "justifyContent": "normal",
+        "flexDirection": "row",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-body",
+      "rect": {
+        "x": 17.5,
+        "y": 160,
+        "width": 1405,
+        "height": 653,
+        "top": 160,
+        "right": 1422.5,
+        "bottom": 813,
+        "left": 17.5
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1405px",
+        "height": "653px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexDirection": "row",
+        "border": "",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-body__inner",
+      "rect": {
+        "x": 18,
+        "y": 192.5,
+        "width": 1404.5,
+        "height": 588,
+        "top": 192.5,
+        "right": 1422.5,
+        "bottom": 780.5,
+        "left": 18
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1404.5px",
+        "height": "588px",
+        "padding": "0px",
+        "gap": "29px",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexDirection": "column",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-body__intro",
+      "rect": {
+        "x": 339.25,
+        "y": 250.8984375,
+        "width": 762,
+        "height": 213.546875,
+        "top": 250.8984375,
+        "right": 1101.25,
+        "bottom": 464.4453125,
+        "left": 339.25
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "762px",
+        "height": "213.547px",
+        "padding": "41.5px 0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexDirection": "column",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-description",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "css": {
+        "fontSize": "48px",
+        "fontFamily": "\"PP Editorial New\", \"Cormorant Garamond\", serif",
+        "fontWeight": "200",
+        "lineHeight": "65.28px",
+        "width": "auto",
+        "height": "auto",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "none",
+        "alignItems": "normal",
+        "justifyContent": "normal",
+        "flexDirection": "row",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-body__divider",
+      "rect": {
+        "x": 420.75,
+        "y": 493.4453125,
+        "width": 599,
+        "height": 0.5,
+        "top": 493.4453125,
+        "right": 1019.75,
+        "bottom": 493.9453125,
+        "left": 420.75
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "599px",
+        "height": "0.5px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "block",
+        "alignItems": "normal",
+        "justifyContent": "normal",
+        "flexDirection": "row",
+        "border": "",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-body__credentials-col",
+      "rect": {
+        "x": 18,
+        "y": 522.9453125,
+        "width": 1404.5,
+        "height": 199.15625,
+        "top": 522.9453125,
+        "right": 1422.5,
+        "bottom": 722.1015625,
+        "left": 18
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1404.5px",
+        "height": "199.156px",
+        "padding": "28px 0px 0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "normal",
+        "justifyContent": "center",
+        "flexDirection": "row",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-credentials",
+      "rect": {
+        "x": 426.75,
+        "y": 550.9453125,
+        "width": 587,
+        "height": 171.15625,
+        "top": 550.9453125,
+        "right": 1013.75,
+        "bottom": 722.1015625,
+        "left": 426.75
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "587px",
+        "height": "171.156px",
+        "padding": "0px",
+        "gap": "85px",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "flow-start",
+        "justifyContent": "center",
+        "flexDirection": "row",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".credential-block",
+      "rect": {
+        "x": 426.75,
+        "y": 550.9453125,
+        "width": 273,
+        "height": 152.4375,
+        "top": 550.9453125,
+        "right": 699.75,
+        "bottom": 703.3828125,
+        "left": 426.75
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "273px",
+        "height": "152.438px",
+        "padding": "0px 44px 38px 0px",
+        "gap": "12px",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "flow-start",
+        "justifyContent": "normal",
+        "flexDirection": "column",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".credential-block--mit",
+      "rect": {
+        "x": 784.75,
+        "y": 550.9453125,
+        "width": 229,
+        "height": 171.15625,
+        "top": 550.9453125,
+        "right": 1013.75,
+        "bottom": 722.1015625,
+        "left": 784.75
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "229px",
+        "height": "171.156px",
+        "padding": "0px 0px 38px",
+        "gap": "12px",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "flow-start",
+        "justifyContent": "normal",
+        "flexDirection": "column",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".credential-desc",
+      "rect": {
+        "x": 426.75,
+        "y": 627.9453125,
+        "width": 229,
+        "height": 37.4375,
+        "top": 627.9453125,
+        "right": 655.75,
+        "bottom": 665.3828125,
+        "left": 426.75
+      },
+      "css": {
+        "fontSize": "12px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "18.72px",
+        "width": "229px",
+        "height": "37.4375px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "block",
+        "alignItems": "normal",
+        "justifyContent": "normal",
+        "flexDirection": "row",
+        "border": "0px solid rgb(90, 90, 90)",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-logos-row",
+      "rect": {
+        "x": 0,
+        "y": 813,
+        "width": 1440,
+        "height": 268,
+        "top": 813,
+        "right": 1440,
+        "bottom": 1081,
+        "left": 0
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "1440px",
+        "height": "268px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "normal",
+        "flexDirection": "row",
+        "border": "",
+        "animation": "none",
+        "transform": "none"
+      }
+    },
+    {
+      "s": ".hero-logos-row__item",
+      "rect": {
+        "x": -926.427490234375,
+        "y": 927.75,
+        "width": 288,
+        "height": 39,
+        "top": 927.75,
+        "right": -638.427490234375,
+        "bottom": 966.75,
+        "left": -926.427490234375
+      },
+      "css": {
+        "fontSize": "16px",
+        "fontFamily": "Geist, system-ui, -apple-system, \"system-ui\", sans-serif, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "width": "288px",
+        "height": "39px",
+        "padding": "0px",
+        "gap": "normal",
+        "margin": "0px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexDirection": "row",
+        "border": "0px solid rgb(0, 0, 0)",
+        "animation": "none",
+        "transform": "none"
+      }
+    }
+  ]
+}
