@@ -1,0 +1,2 @@
+# Preserve the original PDF bytes across checkouts.
+*.pdf binary

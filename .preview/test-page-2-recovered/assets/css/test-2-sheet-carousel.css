@@ -1,0 +1,28 @@
+.t2-sheet-carousel { --carousel-inset: max(38px, calc((100vw - 1147px) / 2)); --carousel-top: 100px; --carousel-panel-height: min(612px, calc(100svh - 180px)); }
+.t2-sheet-carousel-track { display: grid; gap: 64px; padding-inline: var(--carousel-inset); }
+.t2-sheet-carousel-panel { display: grid; grid-template-columns: minmax(0, 316fr) minmax(0, 703fr); align-items: center; gap: 7.4%; min-width: 0; }
+.t2-sheet-carousel-image { width: 100%; height: auto; }
+.t2-sheet-carousel-card { background: #fff; border-radius: 48px; padding: 56px; min-height: 510px; }
+.t2-sheet-carousel-copy h3 { font-size: clamp(30px, 2.65vw, 38px); line-height: 1.2; }
+.t2-sheet-carousel-copy p { margin-top: 30px; font-size: 16px; line-height: 1.55; }
+.t2-sheet-carousel[data-scroll-carousel] { height: var(--carousel-height); }
+.t2-sheet-carousel[data-scroll-carousel] .t2-sheet-carousel-stage { position: sticky; top: var(--carousel-top); height: calc(var(--carousel-panel-height) + 64px); display: grid; align-items: center; }
+.t2-sheet-carousel[data-scroll-carousel] .t2-sheet-carousel-viewport { overflow: hidden; }
+.t2-sheet-carousel[data-scroll-carousel] .t2-sheet-carousel-track { display: flex; align-items: center; gap: max(64px, calc(var(--carousel-inset) * 2)); width: max-content; will-change: transform; }
+.t2-sheet-carousel[data-scroll-carousel] .t2-sheet-carousel-panel { flex: 0 0 auto; width: min(1147px, calc(100vw - 76px)); min-height: var(--carousel-panel-height); }
+.t2-sheet-carousel-dark { background: #000; color: #f2f2f2; }
+.t2-sheet-carousel-dark .t2-sheet-carousel-card { background: #1c1c1c; }
+.t2-sheet-carousel-dark .t2-sheet-carousel-copy p { color: #c2c2c2; }
+.t2-carousel-media-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 1778 / 1080; border: 1px dashed #444; border-radius: 16px; color: #999; font-size: 14px; }
+@media (max-width: 1023px) {
+  .t2-sheet-carousel-card { padding: 32px; border-radius: 32px; }
+  .t2-sheet-carousel-panel { gap: 40px; }
+}
+@media (max-width: 767px) {
+  .t2-sheet-carousel { --carousel-inset: 24px; --carousel-top: 100px; --carousel-panel-height: min(540px, calc(100svh - 180px)); }
+  .t2-sheet-carousel-panel { grid-template-columns: 1fr; gap: 28px; align-content: center; }
+  .t2-sheet-carousel-card { padding: 24px; border-radius: 24px; min-height: 0; }
+  .t2-sheet-carousel-copy h3 { font-size: 28px; }
+  .t2-sheet-carousel-copy p { margin-top: 20px; }
+  .t2-sheet-carousel[data-scroll-carousel] .t2-sheet-carousel-panel { width: calc(100vw - 48px); }
+}

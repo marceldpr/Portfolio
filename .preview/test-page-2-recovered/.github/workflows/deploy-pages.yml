@@ -1,0 +1,122 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Vite
+        run: npm run build -- --base "${{ steps.pages.outputs.base_path }}/"
+
+      - name: Preserve static Webflow assets
+        run: cp -R assets/. dist/assets/
+
+      - name: Fix absolute URLs for GitHub Pages
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const base = (process.env.BASE_PATH || '').replace(/\/+$/, '');
+
+          if (!base || base === '/') {
+            console.log('Root/custom domain: no path rewriting needed.');
+            process.exit(0);
+          }
+
+          const files = [];
+
+          function walk(dir) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+
+              if (entry.isDirectory()) {
+                walk(full);
+              } else if (
+                entry.name.endsWith('.html') ||
+                entry.name.endsWith('.css')
+              ) {
+                files.push(full);
+              }
+            }
+          }
+
+          walk('dist');
+
+          for (const file of files) {
+            let content = fs.readFileSync(file, 'utf8');
+
+            content = content
+              .replace(
+                /(href|src|content)="\/(assets|work)\//g,
+                `$1="${base}/$2/`
+              )
+              .replace(
+                /url\((['"]?)\/assets\//g,
+                `url($1${base}/assets/`
+              )
+              .replace(
+                /href="\/#/g,
+                `href="${base}/#`
+              )
+              .replace(
+                /href="\/"/g,
+                `href="${base}/"`
+              );
+
+            fs.writeFileSync(file, content);
+          }
+
+          console.log(`Rewrote ${files.length} files for ${base}`);
+          NODE
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

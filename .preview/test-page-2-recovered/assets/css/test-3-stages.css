@@ -1,0 +1,118 @@
+.t3-stages-root {
+  width: 100%;
+  max-width: 1129px;
+  color: #000;
+  background: #fbfbfb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.56;
+}
+
+.t3-stages-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px 403px;
+}
+
+.t3-stages-tab {
+  appearance: none;
+  padding: 5px 9px;
+  border: 1px solid #317df1;
+  border-radius: 2px;
+  background: transparent;
+  color: #317df1;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .18s, color .18s, border-color .18s;
+}
+
+.t3-stages-tab:hover {
+  background-color: #317df114;
+}
+
+.t3-stages-tab[aria-selected='true'] {
+  background-color: #317df1;
+  color: #fff;
+}
+
+.t3-stages-tab:focus-visible,
+.t3-stages-panel:focus-visible {
+  outline: 2px solid #317df1;
+  outline-offset: 4px;
+}
+
+.t3-stages-panel {
+  display: grid;
+  grid-template-columns: 291px minmax(0, 1fr);
+  align-items: start;
+  gap: 112px;
+  animation: t3-stages-reveal .25s ease-out;
+}
+
+.t3-stages-panel[hidden] {
+  display: none;
+}
+
+.t3-stages-heading {
+  margin: 0 0 16px;
+  color: #000;
+  font-family: Editorial, 'Times New Roman', serif;
+  font-size: 32px;
+  font-weight: 200;
+  line-height: 1.36;
+}
+
+.t3-stages-description {
+  margin: 0;
+  color: #777;
+  font: inherit;
+}
+
+.t3-stages-media {
+  display: block;
+  min-width: 0;
+}
+
+.t3-stages-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  object-position: center top;
+}
+
+@keyframes t3-stages-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 800px) {
+  .t3-stages-tabs {
+    margin-left: 0;
+  }
+
+  .t3-stages-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .t3-stages-copy {
+    max-width: 440px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t3-stages-panel {
+    animation: none;
+  }
+
+  .t3-stages-tab {
+    transition: none;
+  }
+}
